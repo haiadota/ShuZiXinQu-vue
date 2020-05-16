@@ -29,7 +29,7 @@
     import Theme from '@/components/Theme.vue'
     import Overall from './left/Overall.vue'
     import River from './left/River.vue'
-    import AirLine from './right/AirLine.vue'
+    import AirLine from './right/AirBar.vue'
     import FourBar3d from './right/FourBar3d.vue'
     import QiYeScrollList from './right/QiYeScrollList.vue'
 
@@ -52,8 +52,8 @@
         data() {
             return {
                 btnList: [
-                    {name: '空气监测点', action: ''},
-                    {name: '重点监控企业', action: ''},
+                    {name: '空气监测点', action: 'KongqiJiance'},
+                    {name: '重点监控企业', action: 'ZhongdianQiye'},
                 ]
             }
         },

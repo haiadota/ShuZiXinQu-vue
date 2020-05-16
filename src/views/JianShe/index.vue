@@ -59,8 +59,10 @@
         data() {
             return {
                 btnList: [
-                    {name: '人口分布', action: 'BarLayer'},
-                    {name: '社区分布', action: 'HomeVideo'},
+                    {name: '重大项目', action: 'ZhongdaXiangmu'},
+                    {name: '市政巡查车', action: 'Xunchache'},
+                    {name: '环卫车', action: 'Huanweiche'},
+                    {name: '垃圾箱', action: 'Lajixiang'},
                 ]
             }
         },

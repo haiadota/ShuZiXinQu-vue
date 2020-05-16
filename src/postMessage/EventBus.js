@@ -11,23 +11,34 @@ class EventBus {
         }
         this.iframeWindow = iFrame.contentWindow;
     }
+
     postMessage(obj) {
-        if (obj.type && _.isString(obj.type)) {
+        if (store.state.btnFlag != obj.type && obj.type && _.isString(obj.type)) {
+            store.commit('handlebtnFlag', obj.type)
             this.iframeWindow.postMessage(obj, '*');
+            setTimeout(function () {
+                store.commit('handlebtnFlag', '')
+            }, 3*1000)
         }
     }
+
     onEvent(eventType, callback) {
         this.vue.$on(
-            eventType, data => { callback(data); }
+            eventType, data => {
+                callback(data);
+            }
         );
     }
+
     offEvent(eventType, callback) {
         this.vue.$off(eventType);
     }
+
     emitEvent(eventType, data) {
         this.vue.$emit(eventType, data);
     }
 }
+
 const eventBus = new EventBus();
 
 window.eventBus = eventBus;

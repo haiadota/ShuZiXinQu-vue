@@ -1,14 +1,7 @@
 <template>
     <div class="main">
         <div class="dark">
-            <div class="wrap">
-                <p class="txt" title="全区实际利用内资162.2亿元"><span>全区实际利用内资<span class="num"> 162.2</span>亿元</span></p>
-                <div class="percent">
-                    <p><span class="num">{{'20.3'}}</span>%</p>
-                    <div v-if="true" class="up"></div>
-                    <div v-else class="down"></div>
-                </div>
-            </div>
+            <p class="txt" title="全区实际利用内资162.2亿元"><span>全区实际利用内资<span class="num"> 162.2</span>亿元</span></p>
         </div>
         <div class="light">
             <p class="txt" title="实际利用外资7287.8万美元"><span>实际利用外资 <span class="num">7287.8</span>万美元</span></p>
@@ -28,7 +21,7 @@
 <style lang="scss" scoped>
     .main{
         margin-bottom: 3%;
-        height: 18%;
+        height: 14%;
     }
     .dark{
         padding: 0 5px;
@@ -47,15 +40,7 @@
         justify-content: space-between;
         align-items: center;
     }
-    .wrap{
-        width: 100%;
-        height: 100%;
-        padding-top: 10px;
-    }
-    .percent{
-        display: flex;
-        justify-content: flex-end;
-    }
+
     .txt{
         text-indent: 0px;
          overflow: hidden;
@@ -63,21 +48,5 @@
         white-space: nowrap;
         display: flex;
         align-items: center;
-    }
-    .up{
-        width: 0;
-        height: 0;
-        border-width: 14px;
-        border-style: solid;
-        border-color: transparent transparent #F19149 transparent;
-        transform: translateY(-7px);
-    }
-    .down{
-        width: 0;
-        height: 0;
-        border-width: 14px;
-        border-style: solid;
-        border-color:#00b7ee transparent transparent transparent;
-        transform: translateY(7px);
     }
 </style>

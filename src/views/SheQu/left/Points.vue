@@ -1,22 +1,22 @@
 <template>
     <div class="main">
         <div class="dark">
-            <img src="../../../../public/image/SheQu/shequ.png" alt="" class="image">
+            <img src="../../../../public/image/shequ.png" alt="" class="image">
             <span class="txt">社区总量</span>
             <span><span class="num">{{'42'}}</span> 个</span>
         </div>
         <div class="light">
-            <img src="../../../../public/image/SheQu/xiaoqu.png" alt="" class="image">
+            <img src="../../../../public/image/xiaoqu.png" alt="" class="image">
             <span class="txt">小区总量</span>
             <span><span class="num">{{'1232'}}</span> 个</span>
         </div>
         <div class="dark">
-            <img src="../../../../public/image/SheQu/wangge.png" alt="" class="image">
+            <img src="../../../../public/image/wangge.png" alt="" class="image">
             <span class="txt">网格数</span>
             <span><span class="num">{{'4345'}}</span> 个</span>
         </div>
         <div class="light">
-            <img src="../../../../public/image/SheQu/renyuan.png" alt="" class="image">
+            <img src="../../../../public/image/wanggeyuan.png" alt="" class="image">
             <span class="txt">网格员总量</span>
             <span><span class="num">{{'5454'}}</span> 人</span>
         </div>

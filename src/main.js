@@ -8,6 +8,7 @@ import './assets/style/reset.css'
 import './assets/iconfont/iconfont.css'
 import '../public/font/RuiZiBiGeQingChunTiJian2-0-1.css'
 import '../public/newFont/FZZZHUNHJW.css'
+import './postMessage/EventOn.js';
 
 import Highcharts from 'highcharts/highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
@@ -25,10 +26,29 @@ Vue.prototype.$echarts = echarts
 Vue.use(VueAxios, axios)
 Vue.config.productionTip = false
 
-router.beforeEach((to,from,next) => {
-    window.addEventListener('load',function () {
-        router.replace('/Home')
-    })
+router.beforeEach((to, from, next) => {
+    store.commit('handleLoadFlag', false)
+    let hashTo = to.path.split('/')[1]
+    let hashFrom = from.path.split('/')[1]
+    if ('CarXunCha' == hashTo) {
+        document.getElementById('3dIframe').style.visibility = 'hidden'
+        store.commit('handleCarXunCha', true)
+        store.commit('handleShowNav', false)
+    } else if ('KeyQiYe' == hashTo) {
+        // store.commit('handleKeyQiYe', true)
+        store.commit('handleShowNav', false)
+        store.commit('handleLoadFlag', true)
+    } else if ('SunshineSheQu' == hashTo||'SixBuilding' == hashTo) {
+        store.commit('handleShowNav', false)
+        if('SheQu' == hashFrom){
+            store.commit('handleLoadFlag', true)
+        }
+    } else {
+        document.getElementById('3dIframe').style.visibility = 'visible'
+        store.commit('handleCarXunCha', false)
+        store.commit('handleKeyQiYe', false)
+        store.commit('handleShowNav', true)
+    }
     next()
 })
 

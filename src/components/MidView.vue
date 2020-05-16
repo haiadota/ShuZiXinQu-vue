@@ -1,5 +1,7 @@
 <template>
-    <div class="mid_view"></div>
+    <div class="mid_view">
+        <slot></slot>
+    </div>
 </template>
 
 <script>

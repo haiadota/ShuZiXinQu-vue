@@ -15,29 +15,53 @@
                 return {
                     title: {
                         text: '',
-                        subtext: '实现增加值\n同比增长',
+                        subtext: [
+                            '实现增加值',
+                            '{b|同比增长}'
+                        ].join('\n'),
                         textStyle: {
                             align: 'center',
-                            fontSize: 0,
                         },
                         subtextStyle: {
                             color: '#fff',
-                            fontSize: 14,
-                            lineHeight: 24
+                            fontSize: '70%',
+                            lineHeight: 30,
+                            rich: {
+                                b: {
+                                    color: '#77eca6',
+                                    fontSize: '70%',
+                                },
+                            },
                         },
-                        top: '-5%',
+                        top: '-3%',
                         left: '-1%',
                     },
                     legend: {
                         itemWidth: 13,
                         itemHeight: 13,
-                        data: ['第一产业','第二产业','第三产业','\n', '第一产业 ', '第二产业 ', '第三产业 '],
+                        data: ['第一产业', '第二产业', '第三产业', '\n',
+                            {
+                                name: '第一产业 ',
+                                textStyle: {
+                                    // color: '#77eca6'
+                                }
+                            }, {
+                                name: '第二产业 ',
+                                textStyle: {
+                                    // color: '#77eca6'
+                                }
+                            }, {
+                                name: '第三产业 ',
+                                textStyle: {
+                                    // color: '#77eca6'
+                                }
+                            }],
                         textStyle: {
-                            color: '#B5C9FF',
-                            fontSize: 14,
+                            color: '#fff',
+                            fontSize: 20,
                         },
                         show: true,
-                        right: "-3%",
+                        right: "0%",
                         top: '0%',
                     },
                     tooltip: {
@@ -45,9 +69,9 @@
                         trigger: 'axis',
                     },
                     grid: {
-                        left: '0%',
-                        right: '0%',
-                        top: '23%',
+                        left: '6%',
+                        right: '7.5%',
+                        top: '30%',
                         bottom: '5%',
                         containLabel: true
                     },
@@ -64,18 +88,24 @@
                         },
                         axisLabel: {
                             textStyle: {
-                                color: '#B5C9FF'
+                                fontSize: '70%',
+                                color: '#fff'
                             }
                         },
                         axisLine: {
                             lineStyle: {
-                                color: '#484d8d'
+                                color: '#fff'
                             }
                         },
-                        data: ["1月", "2月", "3月", "4月", "5月", "6月"]
+                        data: ["2016","2017","2018"]
                     },
                     yAxis: [
                         {
+                            name: "亿元",
+                            nameTextStyle: {
+                                fontSize: '70%',
+                                color: "#fff"
+                            },
                             color: '#B5C9FF',
                             splitLine: {
                                 show: false
@@ -83,25 +113,33 @@
                             axisLabel: {
                                 formatter: '{value}',
                                 textStyle: {
-                                    color: '#B5C9FF'
+                                    fontSize: '70%',
+                                    color: '#fff'
                                 }
                             },
                             axisLine: {
                                 lineStyle: {
-                                    color: '#484d8d'
+                                    color: '#fff'
                                 }
                             },
                             type: 'value'
                         },
                         {
+                            name: "同比 %",
+                            nameTextStyle: {
+                                fontSize: '70%',
+                                color: "#77eca6"
+                            },
+                            position: "right",
                             color: '#B5C9FF',
                             splitLine: {
                                 show: false,
                             },
                             axisLabel: {
-                                formatter: '{value}%',
+                                formatter: '{value}',
                                 textStyle: {
-                                    color: '#B5C9FF'
+                                    fontSize: '70%',
+                                    color: '#77eca6'
                                 }
                             },
                             type: 'value'
@@ -135,7 +173,7 @@
                             barGap: "10%",
                             itemStyle: {
                                 normal: {
-                                    color: "#1772ef",
+                                    color: "#eee",
                                     label: {
                                         show: false,
                                         textStyle: {
@@ -144,7 +182,7 @@
                                     }
                                 }
                             },
-                            data: [50, 40, 60, 55, 43, 30]
+                            data: [0.8,0.8,0.7]
                         },
                         {
                             name: '第二产业',
@@ -154,7 +192,7 @@
                             barGap: "10%",
                             itemStyle: {
                                 normal: {
-                                    color: "#F1667A",
+                                    color: "#0bceff",
                                     label: {
                                         show: false,
                                         textStyle: {
@@ -163,7 +201,7 @@
                                     }
                                 }
                             },
-                            data: [24, 45, 41, 12, 32, 16]
+                            data: [732.1,816.7,886.1]
                         },
                         {
                             name: '第三产业',
@@ -173,7 +211,7 @@
                             barGap: "10%",
                             itemStyle: {
                                 normal: {
-                                    color: "#cccccc",
+                                    color: "#64e694",
                                     label: {
                                         show: false,
                                         textStyle: {
@@ -182,7 +220,7 @@
                                     }
                                 }
                             },
-                            data: [24, 45, 41, 12, 32, 22]
+                            data: [63.5,71.8,79.2]
                         },
                         {
                             name: "第一产业 ",
@@ -192,7 +230,7 @@
                             symbol: 'circle',
                             itemStyle: {
                                 normal: {
-                                    color: "rgba(152,130,148,1)",
+                                    color: "#eee",
                                     barBorderRadius: 0,
                                     label: {
                                         show: false,
@@ -200,7 +238,7 @@
                                     }
                                 }
                             },
-                            data: [73, 55, 65, 55, 33, 55]
+                            data: [21.7,3.4,3.4]
                         },
                         {
                             name: "第二产业 ",
@@ -210,7 +248,7 @@
                             symbol: 'circle',
                             itemStyle: {
                                 normal: {
-                                    color: "rgba(232,230,248,1)",
+                                    color: "#0bceff",
                                     barBorderRadius: 0,
                                     label: {
                                         show: false,
@@ -218,7 +256,7 @@
                                     }
                                 }
                             },
-                            data: [23, 35, 45, 25, 53, 35]
+                            data: [8.1,8.7,8.3]
                         },
                         {
                             name: "第三产业 ",
@@ -228,7 +266,7 @@
                             symbol: 'circle',
                             itemStyle: {
                                 normal: {
-                                    color: "rgba(10,30,48,1)",
+                                    color: "#64e694",
                                     barBorderRadius: 0,
                                     label: {
                                         show: false,
@@ -236,7 +274,7 @@
                                     }
                                 }
                             },
-                            data: [42, 33, 28, 49, 51, 66]
+                            data: [8.6,9.3,6]
                         },
                     ]
                 };

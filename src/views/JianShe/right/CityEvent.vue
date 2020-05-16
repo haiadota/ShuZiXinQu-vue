@@ -43,7 +43,7 @@
                         categories: ['1','2','3','4','5','6','7','8','9','10','11','12'],
                         labels:{
                             style:{
-                                'fontSize' : '15px',
+                                'fontSize' : '0.6vw',
                                 color: '#fff'
                             }
                         }
@@ -59,14 +59,14 @@
                                 return this.value
                             },
                             style:{
-                                'fontSize' : '15px',
+                                'fontSize' : '0.6vw',
                                 color: '#fff'
                             }
                         }
                     },
                     tooltip: {
                         style:{
-                            'fontSize' : '20px',
+                            'fontSize' : '0.8vw',
                         },
                         shared: true,
                         headerFormat: '<b>{point.key}</b>月',
@@ -82,7 +82,6 @@
                     },
                     series: [{
                         data: [500, 300, 140, 420, 120,350, 360, 400, 710, 200,520,280],
-                        color: '#0bceff',
                         stack: 'male'
                     }]
                 }
@@ -93,6 +92,15 @@
         },
         methods: {
             initChart() {
+                let that = this
+                var colors = ['#1A83D2', '#19F4D2'];
+                this.$Highcharts.getOptions().colors = this.$Highcharts.map(colors, function (color) {
+                    return {
+                        radialGradient: {cx: 0, cy: -0.8, r: 2.3},
+                        stops: [[0, color], [2, that.$Highcharts.Color(color).brighten(14).get('rgb')] // darken
+                        ]
+                    };
+                })
                 this.chart = new this.$Highcharts.Chart(this.$refs.chart, this.option);
             }
         }
@@ -102,7 +110,7 @@
 <style scoped>
     .main {
         position: relative;
-        height: 24%;
+        height: 22%;
     }
     .highcharts-container {
         height: 100%;

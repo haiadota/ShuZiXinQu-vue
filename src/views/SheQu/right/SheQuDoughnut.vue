@@ -42,13 +42,14 @@
                         text: ''
                     },
                     legend:{
+                        labelFormat: '{name}<br>{y}件',
                         itemHight: 60,
                         align: 'right', //水平方向位置
                         verticalAlign: 'middle', //垂直方向位置
                         layout: 'vertical',
                         itemStyle : {
-                            'fontSize' : '16px',
-                            'color' : '#fff',
+                            'fontSize': '0.7vw',
+                            'color': '#fff',
                             // 'fontFamily': '微软雅黑',
                             'fontWeight': 'lighter'
                         }
@@ -65,7 +66,7 @@
                                 format: '{point.name}'
                             },
                             showInLegend: true,
-                            innerSize: 110,
+                            innerSize: '80%',
                             depth: 15,
                         }
                     },
@@ -73,8 +74,8 @@
                         type: 'pie',
                         name: '数据资源',
                         data: [
-                            {y: 1089, name: '事件已处理<br/>1089件'},
-                            {y: 143,color: 'yellow', name: '事件未处理<br/>143件'},
+                            {y: 986, name: '事件已处理'},
+                            {y: 246,color: 'yellow', name: '事件未处理'},
                         ],
                     }]
                 }
@@ -125,7 +126,7 @@
             text-align: center;
             position: absolute;
             height: 100%;
-            width: 60%;
+            width: 70%;
             top: 0;
             left: 0;
             display: flex;

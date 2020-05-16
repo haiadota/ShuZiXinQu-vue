@@ -1,21 +1,21 @@
 <template>
     <div class="main">
         <div class="item">
-            <!--<div class="txt">-->
-            <!--<div class="wrap">-->
-            <!--<p>总量{{'365'}}</p>-->
-            <!--<p>市政巡查车</p>-->
-            <!--</div>-->
-            <!--</div>-->
+            <div class="txt">
+                <div class="wrap">
+                    <p>总量{{'49'}}</p>
+                    <p>市政巡查车</p>
+                </div>
+            </div>
             <div class="chart" ref="first"></div>
         </div>
         <div class="item">
-            <!--<div class="txt">-->
-            <!--<div class="wrap">-->
-            <!--<p>总量{{'365'}}</p>-->
-            <!--<p>环卫车</p>-->
-            <!--</div>-->
-            <!--</div>-->
+            <div class="txt">
+                <div class="wrap">
+                    <p>总量{{'107'}}</p>
+                    <p>环卫车</p>
+                </div>
+            </div>
             <div class="chart" ref="second"></div>
         </div>
     </div>
@@ -25,7 +25,7 @@
     export default {
         name: "CarInfo",
         methods: {
-            option(title) {
+            option( name, numArr) {
                 return {
                     credits: {
                         enabled: false,
@@ -39,13 +39,13 @@
                         }
                     },
                     title: {
-                        text: title,
+                        text: '',
                         floating: true,
                         useHTML: true,
                         verticalAlign: 'middle',
                         align: 'center',
                         x: 23,
-                        y: 18,
+                        y: 0,
                         style: {
                             fontSize: '16px',
                             lineHeight: 1,
@@ -57,39 +57,47 @@
                     },
                     plotOptions: {
                         pie: {
-                            center: [83, 50],
+                            center: ['65%', '50%'],
                             cursor: 'pointer',
                             showInLegend: true,
-                            innerSize: 96,
+                            innerSize: '80%',
                             depth: 15,
-                            size: 125
+                            size: '85%'
                         }
                     },
+                    tooltip: {
+                        style: {
+                            'fontSize': '0.8vw',
+                        },
+                        shared: true,
+                        headerFormat: '<span>{point.key}</span><br>',
+                        pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: <span class="num">{point.y}</span>辆 '
+                    },
                     series: [{
-                        name: '监控车辆',
+                        name: '在线量',
                         data: [
                             {
-                                y: 20,
+                                y: numArr[0],
                                 name: '',
-                                color: '#eee',
+                                color: '#e8f860',
                                 dataLabels: {
                                     enabled: false,
                                 }
                             },
                             {
-                                y: 111,
-                                name: '360<br/><HR><br/>在线量',
+                                y: numArr[1],
+                                name: name,
                                 color: '#0bceff',
                                 dataLabels: {
+                                    format: "{y}<br>在线量",
                                     y: 0,
                                     padding: 0,
                                     connectorColor: '#fff',
                                     distance: 5,
                                     enabled: true,
                                     style: {
-                                        // fontFamily: 'RuiZi',
                                         fontWeight: 'light',
-                                        fontSize: 14,
+                                        fontSize: '0.7vw',
                                         color: "#fff",
                                         textOutline: "none"
                                     }
@@ -101,8 +109,8 @@
             }
         },
         mounted() {
-            this.myChartFirst = new this.$Highcharts.Chart(this.$refs.first, this.option('<div style="text-align: center">总量：365<br>市政巡查车'));
-            this.myChartSecond = new this.$Highcharts.Chart(this.$refs.second, this.option('<div style="text-align: center">总量：365<br>环卫车</div>'));
+            this.myChartFirst = new this.$Highcharts.Chart(this.$refs.first, this.option('市政巡查车', [5, 44]));
+            this.myChartSecond = new this.$Highcharts.Chart(this.$refs.second, this.option('环卫车', [10, 97]));
         },
         beforeDestroy() {
             this.myChartFirst.destroy()
@@ -125,14 +133,15 @@
 
             .txt {
                 position: absolute;
-                left: 0;
+                right: 0;
                 top: 0;
-                width: 100%;
-                height: 100%;
+                width: 77%;
+                height: 96%;
                 display: flex;
                 align-items: center;
-                justify-content: flex-end;
+                justify-content: center;
                 text-align: center;
+                font-size: 16px;
             }
 
             .chart {

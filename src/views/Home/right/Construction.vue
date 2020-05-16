@@ -17,8 +17,8 @@
                     <div>今日损坏部件</div>
                 </div>
                 <div>
-                    <span class="num">12</span>
-                    <span class="unit"> 件</span>
+                    <span class="num">45</span>
+                    <span class="unit"> 个</span>
                 </div>
             </div>
         </div>

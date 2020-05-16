@@ -55,8 +55,8 @@
         data() {
             return {
                 btnList:[
+                    {name:'社区分布',action:'shequguihua'},
                     {name:'人口分布',action:'BarLayer'},
-                    {name:'社区分布',action:'HomeVideo'},
                 ]
             }
         },

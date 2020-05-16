@@ -1,7 +1,7 @@
 *{word-wrap:break-word}
 html,body,h1,h2,h3,h4,h5,h6,hr,p,iframe,dl,dt,dd,ul,ol,li,pre,form,button,input,textarea,th,td,fieldset{margin:0;padding:0}
 ul,ol,dl{list-style-type:none}
-html,body{*position:static;width:100%;height:100%}
+html,body{*position:static;}
 html{font-family: sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#ffffff;font-size: 2.6vw}
 address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:400}
 input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}
@@ -43,28 +43,44 @@ Explain:		Clearfix（简写cl）避免因子元素浮动而导致的父元素高
 .box{height: 100%;width: 100%}
 
 .main_view{display: flex;position: relative}
-.mid_view{flex: 1}
-.left_view{box-sizing:content-box;width:340px;height:100%;position: relative;pointer-events: all;padding: 8px 15px 0 4px;transition: width 1s}
-.right_view{box-sizing:content-box;width: 340px;height:100%;position: relative;padding: 0rem 5px 0 .2rem;pointer-events: all}
-.left_view:after{
-    content: '';
-    display: block;
-    width: 0.04rem;
-    height: 45%;
-    position: absolute;
-    right: 0;
-    top: 22%;
-    background: rgba(60,255,248,0.2);
+.mid_view{flex: 1;display: flex;justify-content: center;align-items: center;position:relative}
+.left_view{box-sizing:content-box;width:340px;height:100%;position: relative;padding: 8px 15px 0 4px;pointer-events: all;animation: slide_left 1s linear;}
+.right_view{box-sizing:content-box;width: 350px;height:100%;position: relative;padding: 0rem 5px 0 .2rem;pointer-events: all;animation: slide_right 1s linear;}
+/*.left_view:after{*/
+    /*content: '';*/
+    /*display: block;*/
+    /*width: 0.04rem;*/
+    /*height: 45%;*/
+    /*position: absolute;*/
+    /*right: 0;*/
+    /*top: 22%;*/
+    /*background: rgba(60,255,248,0.2);*/
+/*}*/
+/*.right_view:after{*/
+    /*content: '';*/
+    /*display: block;*/
+    /*width: 0.04rem;*/
+    /*height: 45%;*/
+    /*position: absolute;*/
+    /*left: -0.02rem;*/
+    /*top: 22%;*/
+    /*background: rgba(60,255,248,0.2);*/
+/*}*/
+@keyframes slide_left {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
 }
-.right_view:after{
-    content: '';
-    display: block;
-    width: 0.04rem;
-    height: 45%;
-    position: absolute;
-    left: -0.02rem;
-    top: 22%;
-    background: rgba(60,255,248,0.2);
+@keyframes slide_right {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
 }
 .left_view .white_bar{
     width: 0.02rem;
@@ -78,7 +94,7 @@ Explain:		Clearfix（简写cl）避免因子元素浮动而导致的父元素高
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    padding: 0 .05rem 0 .2rem;
+    padding: 0 2px 0 8px;
     border-radius: .2rem .2rem 0 0;
     position: relative;
 }

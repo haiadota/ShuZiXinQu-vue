@@ -28,7 +28,6 @@
                             viewDistance: 90,
                             depth: 40,
                         },
-                        marginTop: 40,
                         marginBottom: 35,
                         marginLeft: 30,
                         marginRight: 0
@@ -41,17 +40,17 @@
                         verticalAlign: 'top', //垂直方向位置
                         y: -10,
                         itemStyle : {
-                            'fontSize' : '16px',
+                            'fontSize' : '0.6vw',
                             'color' : '#fff',
                             // 'fontFamily': '微软雅黑',
                             'fontWeight': 'lighter'
                         }
                     },
                     xAxis: {
-                        categories: ['1月','2月','3月',],
+                        categories: ['2月','3月','4月',],
                         labels:{
                             style:{
-                                'fontSize' : '15px',
+                                'fontSize' : '0.6vw',
                                 color: '#fff'
                             }
                         }
@@ -63,11 +62,8 @@
                             text: ''
                         },
                         labels:{
-                            formatter:function (){
-                                return this.value + '件' ;
-                            },
                             style:{
-                                'fontSize' : '15px',
+                                'fontSize' : '0.6vw',
                                 color: '#fff'
                             }
                         }
@@ -88,25 +84,25 @@
                         }
                     },
                     series: [{
-                        name: '空港',
-                        data: [5, 3, 14,],
-                        color: '#1A83D2',
-                        stack: 'konggang'
-                    },{
-                        name: '常德',
-                        data: [3, 2, 15],
-                        color: '#E1EEC3',
-                        stack: 'changde'
-                    },{
                         name: '高新',
-                        data: [4, 7, 2],
-                        color: '#1D976C',
+                        data: [203, 52, 140],
+                        color: '#0bceff',
                         stack: 'gaoxin'
                     },{
                         name: '北湖',
-                        data: [4, 5, 3],
-                        color: '#F8B500',
+                        data: [30, 6, 40],
+                        color: '#e8f860',
                         stack: 'beihu'
+                    },{
+                        name: '常德',
+                        data: [2, 0, 0],
+                        color: '#E1EEC3',
+                        stack: 'changde'
+                    },{
+                        name: '空港',
+                        data: [2, 1, 4,],
+                        color: '#1A83D2',
+                        stack: 'konggang'
                     }]
                 }
             }
@@ -125,7 +121,7 @@
 <style scoped>
     .main {
         position: relative;
-        height: 26%;
+        height: 28%;
         width: 101%;
     }
     .highcharts-container {

@@ -1,14 +1,13 @@
 <template>
     <div class="main">
         <vuescroll :ops="ops">
-
         <table class="list parent-dom">
             <thead class="top">
             <tr>
-                <td>序号</td>
-                <td>企业名称</td>
-                <td>污染物</td>
-                <td>监测值</td>
+                <td class="title">序号</td>
+                <td class="title">企业名称</td>
+                <td class="title">污染物</td>
+                <td class="title">监测值</td>
             </tr>
             </thead>
             <tbody>
@@ -42,24 +41,17 @@
                     },
                 },
                 list: [
-                    {name: '怡景园', family: 431, people: 1160},
-                    {name: '世纪花园', family: 246, people: 629},
-                    {name: '三佳', family: 108, people: 201},
-                    {name: '怡景园', family: 431, people: 1160},
-                    {name: '世纪花园', family: 246, people: 629},
-                    {name: '三佳', family: 108, people: 201},
-                    {name: '怡景园', family: 431, people: 1160},
-                    {name: '世纪花园', family: 246, people: 629},
-                    {name: '三佳', family: 108, people: 201},
-                    {name: '怡景园', family: 431, people: 1160},
-                    {name: '世纪花园', family: 246, people: 629},
-                    {name: '三佳', family: 108, people: 201},
-                    {name: '怡景园', family: 431, people: 1160},
-                    {name: '世纪花园', family: 246, people: 629},
-                    {name: '三佳', family: 108, people: 201},
-                    {name: '怡景园', family: 431, people: 1160},
-                    {name: '世纪花园', family: 246, people: 629},
-                    {name: '三佳', family: 108, people: 201},
+                    {name: '柏林水务长春高新污水处理有限公司', family: 'COD', people: 160},
+                    {name: '柏林水务长春长德水处理有限公司', family: '氨氮', people: 129},
+                    {name: '长春桑德翔恒水务有限公司', family: 'COD', people: 201},
+                    {name: '锦湖轮胎（长春)有限公司', family: '粉尘', people: 160},
+                    {name: '长春凯密特尔化学品有限公司', family: 'PH值', people: 129},
+                    {name: '长春依多科化工有限公司', family: 'COD', people: 201},
+                    {name: '广泽乳业有限公司', family: '二氧化硫', people: 160},
+                    {name: '中国航发长春控制科技有限公司', family: '镉', people: 129},
+                    {name: '长春汉高表面技术有限公司', family: 'COD', people: 201},
+                    {name: '锦湖轮胎（长春)有限公司', family: '硫化物', people: 160},
+                    {name: '中国航发长春控制科技有限公司', family: '铜', people: 129},
                 ]
             }
         }
@@ -77,6 +69,9 @@
         line-height: 30px;
         .top{
             background: rgba(255,255,255,0.35);
+        }
+        .title{
+            white-space:nowrap;
         }
     }
 </style>

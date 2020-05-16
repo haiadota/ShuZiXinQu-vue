@@ -6,7 +6,7 @@
             <span><span class="num">{{'68'}}</span> 万人</span>
         </div>
         <div class="light">
-            <img src="../../../../public/image/home/mianji.png" alt="" class="image">
+            <img src="../../../../public/image/mianji.png" alt="" class="image">
             <span class="txt">总面积</span>
             <span><span class="num">{{'322'}}</span > KM²</span>
         </div>
@@ -18,7 +18,7 @@
         <div class="light">
             <img src="../../../../public/image/home/lvhua.png" alt="" class="image">
             <span class="txt">绿化覆盖率</span>
-            <span><span class="num">{{'28.75'}}</span> %</span>
+            <span><span class="num">{{'25.78'}}</span> %</span>
         </div>
         <div class="dark">
             <img src="../../../../public/image/home/chengzhen.png" alt="" class="image">

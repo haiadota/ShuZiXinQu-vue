@@ -3,15 +3,15 @@
         <div class="list">
             <div class="option">
                 <div>事发总量</div>
-                <div><span class="num">{{'365'}}</span><span> 件</span></div>
+                <div><span class="num">{{'1232'}}</span><span> 件</span></div>
             </div>
             <div class="option">
                 <div>事件处理率</div>
-                <div><span class="num">{{'98'}}</span><span> %</span></div>
+                <div><span class="num">{{'68'}}</span><span> %</span></div>
             </div>
             <div class="option">
                 <div>平均处理时长</div>
-                <div><span class="num">{{'5'}}</span><span> 小时</span></div>
+                <div><span class="num">{{'2'}}</span><span> 天</span><span class="num">{{'16'}}</span><span> 小时</span></div>
             </div>
             <div class="option">
                 <div>事件高发类型</div>

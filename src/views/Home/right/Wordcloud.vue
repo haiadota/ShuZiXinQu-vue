@@ -28,10 +28,10 @@
                         "borderWidth": 1
                     },
                     "series": [{
-                        "name": "积分排行",
+                        "name": "",
                         "type": "wordCloud",
                         "gridSize": 20,
-                        "sizeRange": [12, 24],
+                        "sizeRange": [30, 45],
                         "rotationRange": [0, 0],
                         "shape": "circle",
                         "autoSize": {
@@ -52,18 +52,17 @@
                             }
                         },
                         "data": [
-                            {"name": "供应商01","value": 200,},
-                            {"name": "供应商02","value": 120,},
-                            {"name": "供应商03","value": 230,},
-                            {"name": "供应商04","value": 302,},
-                            {"name": "供应商05","value": 134,},
-                            {"name": "供应商06","value": 256,},
-                            {"name": "供应商07","value": 176,},
-                            {"name": "供应商08","value": 264,},
-                            {"name": "供应商09","value": 186,},
-                            {"name": "供应商10","value": 249,},
-                            {"name": "供应商11","value": 249,},
-                            {"name": "供应商12","value": 249,},
+                            {"name": "复工复产","value": 190,},
+                            {"name": "开学","value": 21,},
+                            {"name": "冠状病毒","value": 19,},
+                            {"name": "促销时间","value": 14,},
+                            {"name": "白马股","value": 14,},
+                            {"name": "复工","value": 12,},
+                            {"name": "无症状感染者","value": 11,},
+                            {"name": "长春师范大学","value": 11,},
+                            {"name": "长春","value": 11,},
+                            {"name": "立讯精密","value": 10,},
+                            {"name": "医学观察","value": 9,},
                         ]
                     }]
                 }

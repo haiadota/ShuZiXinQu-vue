@@ -3,6 +3,7 @@
         <div v-for="item in btnList" class="btn" @click="handleBtn(item)">
             {{item.name}}
         </div>
+        <slot></slot>
     </div>
 </template>
 

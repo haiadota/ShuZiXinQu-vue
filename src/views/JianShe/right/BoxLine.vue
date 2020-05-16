@@ -26,10 +26,24 @@
                     xAxis: {
                         type: 'category',
                         boundaryGap: false,
-                        data: xarr
+                        data: xarr,
+                        axisLabel: {
+                            show: true,
+                            textStyle: {
+                                color: '#fff',
+                                fontSize: '70%',
+                            },
+                        },
                     },
                     yAxis: {
-                        type: 'value'
+                        type: 'value',
+                        axisLabel: {
+                                show: true,
+                                textStyle: {
+                                    color: '#fff',
+                                    fontSize: '70%',
+                                },
+                            },
                     },
                     tooltip: {
                         // trigger: 'none',
@@ -46,9 +60,9 @@
                                 x2: 0,
                                 y2: 1,
                                 colorStops: [{
-                                    offset: 0, color: '#19F4D2' // 0% 处的颜色
+                                    offset: 0, color: '#1A83D2' // 0% 处的颜色
                                 }, {
-                                    offset: 1, color: '#1A83D2' // 100% 处的颜色
+                                    offset: 1, color: '#19F4D2' // 100% 处的颜色
                                 }],
                                 global: false // 缺省为 false
                             }
@@ -78,7 +92,7 @@
 
 <style scoped>
     .main {
-        height: 24%;
+        height: 22%;
     }
 
     .chart {

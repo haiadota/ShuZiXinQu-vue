@@ -43,12 +43,12 @@
                 },
                 list: [
                     {name: '食品工业', family: 29.2, people: 183.80},
-                    {name: '电子工业', family: 29.2, people: 17.80},
-                    {name: '汽车工业', family: 20.9, people: 12.90},
-                    {name: '医药工业', family: 493, people: 12.90},
-                    {name: '能源工业', family: 105.5, people: 10.90},
-                    {name: '建材工业', family: 25.2, people: 3.90},
-                    {name: '装备制造业', family: 34.1, people: -6},
+                    {name: '电子工业', family: 20.9, people: 17.80},
+                    {name: '汽车工业', family: 493, people: 12.90},
+                    {name: '医药工业', family: 105.5, people: 12.90},
+                    {name: '能源工业', family: 25.2, people: 10.90},
+                    {name: '建材工业', family: 34.1, people: 3.90},
+                    {name: '装备制造业', family: 16.7, people: -6},
                 ]
             }
         }

@@ -3,19 +3,19 @@
         <div class="text_area">
             <!--<p class="zh">数字新区运行指挥中心</p>-->
             <!--<p class="en">-->
-                <!--<i>-->
-                    <!--<span class="big">O</span>peration-->
-                    <!--<span class="big">C</span>ommand-->
-                    <!--<span class="big">C</span>enter-->
-                    <!--<span class="big">O</span>f-->
-                    <!--<span class="big">D</span>igital-->
-                    <!--<span class="big">N</span>ew-->
-                    <!--<span class="big">A</span>rea-->
-                <!--</i>-->
+            <!--<i>-->
+            <!--<span class="big">O</span>peration-->
+            <!--<span class="big">C</span>ommand-->
+            <!--<span class="big">C</span>enter-->
+            <!--<span class="big">O</span>f-->
+            <!--<span class="big">D</span>igital-->
+            <!--<span class="big">N</span>ew-->
+            <!--<span class="big">A</span>rea-->
+            <!--</i>-->
             <!--</p>-->
         </div>
         <div class="mid_view">
-            <div class="cell_wrap" v-for="(item,index) in navList" :key="index">
+            <div v-if="showNav" class="cell_wrap" v-for="(item,index) in navList" :key="index">
                 <div v-if="index" class="fence">
                     <div class="left_bar"></div>
                     <div class="right_bar"></div>
@@ -48,14 +48,19 @@
                 </div>
             </div>
         </div>
-        <div class="clock">
+        <div class="some">
             <DateTime></DateTime>
+            <div class="bar"></div>
+            <div class="tianqi"></div>
+            <div class="wendu"></div>
+            <div>16℃</div>
         </div>
     </div>
 </template>
 <script>
     import {mapMutations} from 'vuex'
     import DateTime from "@/components/DateTime.vue";
+    import Event from "@/postMessage/Iframe.js";
 
     export default {
         name: "Footer",
@@ -65,54 +70,98 @@
         computed: {
             navIndex() {
                 return this.$store.state.navIndex
+            },
+            showNav() {
+                return this.$store.state.showNav
             }
         },
         data() {
             return {
-                navList: ["城市概览", "社区治理", "生态环保", "城乡建设", "经济活力","数据资源"],
-                roterList: ["Home", "SheQu", "HuanBao", "JianShe", "JingJi","ShuJU"],
+                // navList: ["城市概览", "社区治理", "生态环保", "城乡建设", "经济活力","数据资源",'阳光社区','重点企业','巡查车','六号楼'],
+                navList: ["城市概览", "社区治理", "生态环保", "城乡建设", "经济活力", "数据资源"],
+                roterList: ["Home", "SheQu", "HuanBao", "JianShe", "JingJi", "ShuJU", "SunshineSheQu", "KeyQiYe", "CarXunCha", "SixBuilding"],
             };
         },
         methods: {
-            ...mapMutations(['handleNavIndex']),
+            ...mapMutations(['handleNavIndex', 'handleActiveArr', 'handlePoint']),
             handleRoutingHop(value) {
                 this.handleNavIndex(value)
                 this.$router.push('/' + this.roterList[value])
+                // this.handleActiveArr({name:'高新开发区'})
+                // this.handlePoint({name: '中心点', value: [125.2638816833496, 43.82486751538151, 100]})
+                Event['Tab'](this.roterList[value])
             },
+        },
+        mounted() {
+            let value = window.location.hash.split('/')[1]
+            for (let i in this.roterList) {
+                if (this.roterList[i] == value) {
+                    this.handleNavIndex(i)
+                }
+            }
         }
     }
 </script>
 
 <style lang="scss" scoped>
+    @keyframes slide_down {
+        from {
+            top: -100px;
+        }
+        to {
+            top: 5px;
+        }
+    }
     .navigation_bar {
         width: 100%;
         display: flex;
         align-items: center;
         z-index: 5;
+        top: 5px;
         position: absolute;
-        top: 15px;
         height: 100px;
-        .image{
+        animation: slide_down 1s linear;
+
+        .image {
             height: 50%;
         }
+
         .text_area {
             width: 405px;
             height: 34px;
             background: url("../../public/image/logo.png") no-repeat;
             background-size: 100% 100%;
             margin: 0 50px 0 8px;
-            /*.zh {
-                color: #00ffff;
-                font-size: 22px;
-                letter-spacing: 0.06rem;
-                text-shadow: 0 0 0.3rem #fff;
-            }*/
+        }
 
-            /*.en {
-                font-size: 12px;
-                color: #04fffd;
-                transform: scale(.8) translateX(-25px);
-            }*/
+        .some {
+            height: 80%;
+            padding-bottom: 15px;
+            margin-right: 30px;
+            display: flex;
+            align-items: center;
+
+            .bar {
+                width: 0px;
+                height: 32%;
+                margin: 0 20px;
+                border: 1px solid rgba(170, 170, 170, 1);
+            }
+
+            .tianqi {
+                width: 30px;
+                height: 30px;
+                background: url("../../public/image/qingtian.png") no-repeat;
+                background-size: 100% 100%;
+            }
+
+            .wendu {
+                margin: 0 5px;
+                width: 25px;
+                height: 25px;
+                background: url("../../public/image/wenduji.png") no-repeat;
+                background-size: 100% 100%;
+            }
         }
 
         .mid_view {
@@ -144,7 +193,6 @@
                     position: relative;
 
                     .cell_inactive {
-                        background: rgba(0,0,0,0.3);
                         width: 1.4rem;
                         height: 1.12rem;
                         margin: 0 0.2rem;
@@ -218,7 +266,7 @@
                                     justify-content: center;
                                     align-items: center;
                                     border-radius: 50%;
-                                    background: linear-gradient(to bottom right, rgba(58, 69, 255, 0.5) 0%, rgba(133, 238, 253, 0.5) 100%);
+                                    background: linear-gradient(to bottom right, rgba(58, 69, 255, 0.6) 0%, rgba(133, 238, 253, 0.6) 100%);
                                 }
 
                                 .rotation {
@@ -290,20 +338,6 @@
         to {
             transform: rotate(-359deg);
         }
-    }
-
-    .slide-fade-leave-active {
-        /*transition: all 1.2s cubic-bezier(.14, .39, .29, 1);*/
-        transition: all 1s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-    }
-
-    .slide-fade-enter-active {
-        transition: all 1s ease;
-    }
-
-    .slide-fade-enter, .slide-fade-leave-to {
-        transform: translateY(2rem);
-        opacity: 0;
     }
 
     .bounce-enter-active {

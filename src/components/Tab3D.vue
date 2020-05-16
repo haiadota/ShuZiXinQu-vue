@@ -10,7 +10,7 @@
                 <div class="right_line"></div>
             </div>
         </div>
-        <div class="txt">E {{pointInfo[0].value[0]}}°,N {{pointInfo[0].value[1]}}°</div>
+        <div class="txt">E {{pointInfo[0].value[0].toFixed(6)}}°,N {{pointInfo[0].value[1].toFixed(6)}}°</div>
         <div class="wrap" ref="wrap" :style="{'width':w}">
             <div class="mid">
                 <div class="tab" ref="main"></div>
@@ -28,12 +28,7 @@
         name: "Tab3D",
         computed: {
             pointInfo() {
-                return [
-                    {
-                        name: '北湖公园',
-                        value: [125.438549, 43.986606, 100]
-                    },
-                ]
+                return this.$store.state.point
             },
             activeArr() {
                 return this.$store.state.activeArr
@@ -104,9 +99,9 @@
                             coordinateSystem: 'geo3D',
                             data: this.pointInfo,
                             symbol: 'pin',
-                            symbolSize: 30,
+                            symbolSize: 25,
                             itemStyle: {
-                                color: 'rgba(0,23,11,0.4)',
+                                color: '#2b97df',
                                 borderColor: '#fff',
                                 borderWidth: 1
                             },
@@ -133,7 +128,7 @@
             }
         },
         methods: {
-            ...mapMutations(['handleActiveArr']),
+            ...mapMutations(['handleActiveArr', 'handlePoint']),
         },
         mounted() {
             let that = this
@@ -143,22 +138,27 @@
                 that.myChart = echarts.init(that.$refs.main)
                 that.myChart.setOption(that.option)
                 that.myChart.on('click', function (params) {
-                    that.handleActiveArr(params)
                     let action = ''
+                    let position = []
                     switch (params.name) {
                         case '高新开发区':
                             action = 'ToGaoXin'
+                            position = [125.2638816833496, 43.82486751538151]
                             break
                         case '北湖新区':
                             action = 'ToBeiHu'
+                            position = [125.38627624511717, 44.014793040101814]
                             break
                         case '长德新区':
                             action = 'ToChangDe'
+                            position = [125.49819946289064, 44.0609461392979]
                             break
                         case '空港新区':
                             action = 'ToKongGang'
+                            position = [125.71929931640625, 44.04614157509527]
                             break
                     }
+                    that.handlePoint({name: '中心点', value: position})
                     Event['FlyToXinQu'](action)
                 })
             }).catch(err => {
@@ -166,7 +166,7 @@
             })
         },
         watch: {
-            activeArr() {
+            pointInfo() {
                 this.myChart.setOption(this.option)
             }
         },

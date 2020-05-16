@@ -3,12 +3,12 @@
         <div class="txt">
             <div class="bar"></div>
             <div>今日数据接入量</div>
-            <div><span class="num">{{'55'}}</span></div>
+            <div><span class="num">{{'123'}}</span></div>
             <div>条</div>
         </div>
         <div class="highcharts-container">
             <div class="count">
-                <p class="top num">{{'560'}}</p>
+                <p class="top num">{{'2142'}}</p>
                 <p class="down">数据总量</p>
             </div>
             <div class="chart" ref="chart"></div>
@@ -42,12 +42,13 @@
                         text: ''
                     },
                     legend:{
+                        labelFormat: '{name}{y}条',
                         itemHight: 60,
                         align: 'right', //水平方向位置
                         verticalAlign: 'middle', //垂直方向位置
                         layout: 'vertical',
                         itemStyle : {
-                            'fontSize' : '16px',
+                            'fontSize' : '0.7vw',
                             'color' : '#fff',
                             // 'fontFamily': '微软雅黑',
                             'fontWeight': 'lighter'
@@ -60,16 +61,16 @@
                                 enabled: false
                             },
                             showInLegend: true,
-                            innerSize: 100,
+                            innerSize: '80%',
                             depth: 15
                         }
                     },
                     series: [{
                         name: '数据资源',
                         data: [
-                            {y: 111, name: '物联网数据111条',color:'#90ed7d'},
-                            {y: 222, name: '业务数据222条',color:'#7ce8ec'},
-                            {y: 333, name: '统计数据333条',color:'#7cb5ec'}
+                            {y: 560, name: '物联网数据',color:'#90ed7d'},
+                            {y: 791, name: '业务数据',color:'#7ce8ec'},
+                            {y: 791, name: '统计数据',color:'#7cb5ec'}
                         ]
                     }]
                 }
@@ -121,7 +122,7 @@
             text-align: center;
             position: absolute;
             height: 100%;
-            width: 47%;
+            width: 60%;
             top: 0;
             left: 0;
             display: flex;

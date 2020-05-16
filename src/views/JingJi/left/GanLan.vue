@@ -22,8 +22,9 @@
             return {
                 arr:[
                     {title:'地区生产总值',number:'966.0',units:'亿元',percent:'8.10',status:1},
-                    {title:'农林牧渔业总产值1',number:'13090',units:'万元',percent:'0.20',status:1},
+                    {title:'农林牧渔业总产值',number:'13090',units:'万元',percent:'0.20',status:1},
                     {title:'规上工业企业实现总产值',number:'789.3',units:'亿元',percent:'13.4',status:1},
+                    {title:'固定资产投资',number:'351.9',units:'亿元',percent:'25.2',status:1},
                     {title:'社会消费品零售总额实现',number:'84.8',units:'亿元',percent:'6.30',status:1},
                     {title:'一般预算全口径财政收入',number:'86.6',units:'亿元',percent:'8.0',status:1},
                     {title:'一般公共预算财政收入实现',number:'16.7',units:'亿元',percent:'24.0',status:1},
@@ -36,18 +37,18 @@
 <style lang="scss" scoped>
     .main {
         margin-bottom: 3%;
-        height: 37%;
+        height: 41%;
     }
 
     .dark {
         padding: 0 5px;
         background: rgba(225, 225, 225, .26);
-        height: 16.5%;
+        height: 14.25%;
     }
 
     .light {
         padding: 0 5px;
-        height: 16.5%;
+        height: 14.25%;
     }
 
     .txt {

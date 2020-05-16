@@ -37,14 +37,15 @@
                         }
                     },
                     legend: {
-                        data: ["销售水量", "主营业务"],
+                        data: ["资产值", "同比增长"],
                         top: "10%",
                         textStyle: {
+                            fontSize: 26,
                             color: "#ffffff"
                         }
                     },
                     xAxis: {
-                        data: ["2016","2017","2018","2019",],
+                        data: ["2016","2017","2018"],
                         axisLine: {
                             show: true, //隐藏X轴轴线
                             lineStyle: {
@@ -57,7 +58,8 @@
                         axisLabel: {
                             show: true,
                             textStyle: {
-                                color: "#ebf8ac" //X轴文字颜色
+                                fontSize: '70%',
+                                color: "#fff" //X轴文字颜色
                             }
                         },
 
@@ -67,7 +69,8 @@
                             type: "value",
                             name: "亿元",
                             nameTextStyle: {
-                                color: "#ebf8ac"
+                                fontSize: '70%',
+                                color: "#fff"
                             },
                             splitLine: {
                                 show: false
@@ -84,16 +87,18 @@
                             axisLabel: {
                                 show: true,
                                 textStyle: {
-                                    color: "#ebf8ac"
+                                    fontSize: '70%',
+                                    color: "#fff"
                                 }
                             },
 
                         },
                         {
                             type: "value",
-                            name: "同比",
+                            name: "同比 %",
                             nameTextStyle: {
-                                color: "#ebf8ac"
+                                fontSize: '70%',
+                                color: "#77eca6"
                             },
                             position: "right",
                             splitLine: {
@@ -107,41 +112,35 @@
                             },
                             axisLabel: {
                                 show: true,
-                                formatter: "{value} %", //右侧Y轴文字显示
                                 textStyle: {
-                                    color: "#ebf8ac"
+                                    fontSize: '70%',
+                                    color: "#77eca6"
                                 }
                             }
                         },
                         {
-                            type: "value",
-                            gridIndex: 0,
-                            min: 50,
-                            max: 100,
-                            splitNumber: 8,
                             splitLine: {
-                                show: false
-                            },
-                            axisLine: {
-                                show: false
-                            },
-                            axisTick: {
-                                show: false
+                                show: false,
+                                lineStyle: {
+                                    color: '#FFF'
+                                }
                             },
                             axisLabel: {
-                                show: false
-                            },
-                            splitArea: {
-                                show: true,
-                                areaStyle: {
-                                    color: ["rgba(250,250,250,0.0)", "rgba(250,250,250,0.05)"]
+                                textStyle: {
+                                    color: '#00ecff'
                                 }
-                            }
-                        }
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#484d8d'
+                                }
+                            },
+                            type: 'value'
+                        },
                     ],
                     series: [
                         {
-                            name: "销售水量",
+                            name: "同比增长",
                             type: "line",
                             yAxisIndex: 1, //使用的 y 轴的 index，在单个图表实例中存在多个 y轴的时候有用
                             smooth: true, //平滑曲线显示
@@ -150,34 +149,32 @@
                             symbolSize: 10, //标记的大小
                             itemStyle: {
                                 //折线拐点标志的样式
-                                color: "#058cff"
+                                color: "#77eca6"
                             },
                             lineStyle: {
-                                color: "#058cff"
+                                color: "#77eca6"
                             },
                             areaStyle: {
                                 color: "rgba(5,140,255, 0.2)"
                             },
-                            data: [4.2, 3.8, 4.8, 3.5, 2.9, 2.8, 3, 5]
+                            data: [23.10,14.70,25.20]
                         },
                         {
-                            name: "主营业务",
+                            name: "资产值",
                             type: "bar",
                             barWidth: 10,
                             itemStyle: {
                                 normal: {
-                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                        offset: 0,
-                                        color: "#00FFE3"
-                                    },
-                                        {
-                                            offset: 1,
-                                            color: "#4693EC"
-                                        }
-                                    ])
+                                    color:new echarts.graphic.LinearGradient(
+                                        0, 1, 0, 0,
+                                        [
+                                            {offset: 1, color: '#1A83D2'},
+                                            {offset: 0, color: '#19F4D2'}
+                                        ]
+                                    )
                                 }
                             },
-                            data: [4.2, 3.8, 4.8, 3.5, 2.9, 2.8, 3, 5]
+                            data: [665,714.3,351.9]
                         }
                     ]
                 };

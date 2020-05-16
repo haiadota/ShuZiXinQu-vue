@@ -15,7 +15,7 @@
             </div>
             <div class="option">
                 <div>死亡率</div>
-                <div><span class="num">{{'36.89'}}</span><span >%</span></div>
+                <div><span class="num">{{'3.89'}}</span><span >%</span></div>
                 <!--<div v-if="true" class="up"></div>-->
                 <!--<div v-else class="down"></div>-->
             </div>

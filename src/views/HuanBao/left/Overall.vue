@@ -1,22 +1,22 @@
 <template>
     <div class="main">
         <div class="dark">
-            <img src="../../../../public/image/SheQu/shequ.png" alt="" class="image">
+            <img src="../../../../public/image/HuanBao/kongqi.png" alt="" class="image">
             <span class="txt">空气达标率</span>
             <div><span class="num">{{'78'}}</span> %<span></span></div>
         </div>
         <div class="light">
-            <img src="../../../../public/image/SheQu/xiaoqu.png" alt="" class="image">
+            <img src="../../../../public/image/HuanBao/shuizhi.png" alt="" class="image">
             <span class="txt">水质达标率</span>
             <div><span class="num">{{'98'}}</span> %<span></span></div>
         </div>
         <div class="dark">
-            <img src="../../../../public/image/SheQu/wangge.png" alt="" class="image">
+            <img src="../../../../public/image/qiye.png" alt="" class="image">
             <span class="txt">重点监控企业</span>
             <div><span class="num">{{'11'}}</span> 家<span></span></div>
         </div>
         <div class="light">
-            <img src="../../../../public/image/SheQu/wangge.png" alt="" class="image">
+            <img src="../../../../public/image/HuanBao/shijian.png" alt="" class="image">
             <span class="txt">环保事件</span>
             <div><span class="num">{{'2'}}</span> 件<span></span></div>
         </div>

@@ -51,8 +51,7 @@
         data() {
             return {
                 btnList: [
-                    {name: '人口分布', action: 'BarLayer'},
-                    {name: '社区分布', action: 'HomeVideo'},
+                    {name: '产业园区分布', action: 'ChanYeLayer'},
                 ]
             }
         },

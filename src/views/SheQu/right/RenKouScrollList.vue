@@ -45,11 +45,10 @@
                     {name: '怡景园', family: 431, people: 1160},
                     {name: '世纪花园', family: 246, people: 629},
                     {name: '三佳', family: 108, people: 201},
-                    {name: '怡景园', family: 431, people: 1160},
-                    {name: '世纪花园', family: 246, people: 629},
-                    {name: '三佳', family: 108, people: 201},
-                    {name: '三佳', family: 108, people: 201},
-                    {name: '三佳', family: 108, people: 201},
+                    {name: '教师楼', family: 86, people: 179},
+                    {name: '阳光经典', family: 75, people: 165},
+                    {name: '新时尚花园', family: 46, people: 109},
+                    {name: '武装部家属楼', family: 10, people: 24},
 
                 ]
             }

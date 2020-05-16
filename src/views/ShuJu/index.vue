@@ -9,6 +9,12 @@
         </LeftView>
         <MidView></MidView>
         <RightView>
+            <Theme :value="'数据交换量Top5'"></Theme>
+            <Top5></Top5>
+            <Theme :value="'24H数据交换量趋势分析'"></Theme>
+            <Line24H></Line24H>
+            <Theme :value="'信息资源共享方式对比'"></Theme>
+            <CityTiZheng></CityTiZheng>
         </RightView>
         <Menu :btnList="btnList"></Menu>
     </div>
@@ -23,6 +29,9 @@
     import Menu from '@/components/Menu.vue'
     import GongXiang from './left/JiaoHuan.vue'
     import KaiFang from './left/KaiFang.vue'
+    import CityTiZheng from './right/GongXiang.vue'
+    import Top5 from './right/Top5.vue'
+    import Line24H from './right/Line24H.vue'
 
     export default {
         name: 'ShuJu',
@@ -34,13 +43,15 @@
             Tab3D,
             Menu,
             GongXiang,
-            KaiFang
+            KaiFang,
+            CityTiZheng,
+            Top5,
+            Line24H
         },
         data() {
             return {
                 btnList: [
-                    {name: '人口分布', action: 'BarLayer'},
-                    {name: '社区分布', action: 'HomeVideo'},
+                    {name: '数据传输网络', action: 'FlyLineLayer'},
                 ]
             }
         },

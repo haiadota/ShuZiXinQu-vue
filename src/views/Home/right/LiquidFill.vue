@@ -33,15 +33,15 @@
                 let arr = [value, value, value]
                 return {
                     title: {
-                        text: (value * 100).toFixed(0) + '{a|%}',
+                        text: (value * 100).toFixed(0) + '%',
                         textStyle: {
-                            fontSize: 36,
+                            fontSize: '200%',
                             fontFamily: 'RuiZi',
                             fontWeight: 'normal',
                             color: '#c5c2fb',
                             rich: {
                                 a: {
-                                    fontSize: 22,
+                                    fontSize: '150%',
                                 }
                             }
                         },

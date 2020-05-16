@@ -1,20 +1,19 @@
 <template>
   <div class="selectablefalse main">
-    <p class="date">
-      <span>{{tFullYear}}</span>
-      <span>/</span>
-      <span>{{tMonth}}</span>
-      <span>/</span>
-      <span>{{tDate}}</span>
-      <span></span>
-      <span class="space">{{tDay}}</span>
-    </p>
     <p class="time">
       <span>{{tHours}}</span>
       <span>:</span>
       <span>{{tMinutes}}</span>
       <span>:</span>
       <span>{{tSeconds}}</span>
+      <span class="space">{{tDay}}</span>
+    </p>
+    <p class="date">
+      <span>{{tFullYear}}</span>
+      <span>/</span>
+      <span>{{tMonth}}</span>
+      <span>/</span>
+      <span>{{tDate}}</span>
     </p>
   </div>
 </template>
@@ -71,20 +70,16 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-  .main{
-    margin-right: 30px;
-  }
 .date {
   color: #00fdfb;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   font-size: 14px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 .time {
+  letter-spacing: 2px;
   color: #00fdfb;
-  font-weight: bolder;
-  letter-spacing: 5px;
   font-size: 16px;
   display: flex;
   justify-content: center;

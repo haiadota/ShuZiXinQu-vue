@@ -3,11 +3,11 @@
         <div class="list">
             <div class="option">
                 <div>部件总数</div>
-                <div><span class="num">{{'365'}}</span><span> 个</span></div>
+                <div><span class="num">{{'183223'}}</span><span> 个</span></div>
             </div>
             <div class="option">
                 <div>部件完整率</div>
-                <div><span class="num">{{'98'}}</span><span> %</span></div>
+                <div><span class="num">{{'78'}}</span><span> %</span></div>
             </div>
             <div class="option">
                 <div>部件易损类型</div>

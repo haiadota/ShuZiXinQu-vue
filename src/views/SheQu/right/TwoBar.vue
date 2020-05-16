@@ -52,7 +52,7 @@
                             right: '20%',
                             textStyle: {
                                 color: '#fff',
-                                fontSize: 16,
+                                fontSize: '0.7vw',
                             },
                         },
                         tooltip: {
@@ -60,7 +60,7 @@
                             trigger: 'axis',
                             formatter: '{b}<br/>{a}: {c}%',
                             textStyle: {
-                                fontSize: 18,
+                                fontSize: '80%',
                             },
                             axisPointer: {
                                 type: 'shadow',
@@ -69,22 +69,22 @@
 
                         grid: [{
                             show: false,
-                            left: '17%',
+                            left: '15%',
                             right: '0',
-                            top: 30,
+                            top: '10%',
                             bottom: 10,
                             containLabel: true,
                             width: '40%',
                         }, {
                             show: false,
-                            left: '10%',
-                            top: 40,
+                            left: '8%',
+                            top: '15%',
                             bottom: 10,
                             width: '0%',
                         }, {
                             show: false,
-                            left: '57%',
-                            top: 30,
+                            left: '55%',
+                            top: '10%',
                             bottom: 10,
                             containLabel: true,
                             width: '40%',
@@ -106,7 +106,7 @@
                                 show: true,
                                 textStyle: {
                                     color: '#fff',
-                                    fontSize: 16,
+                                    fontSize: '70%',
                                 },
                             },
                             splitLine: {
@@ -137,7 +137,7 @@
                                 show: true,
                                 textStyle: {
                                     color: '#fff',
-                                    fontSize: 16,
+                                    fontSize: '70%',
                                 },
                             },
                             splitLine: {
@@ -184,7 +184,7 @@
                                 show: true,
                                 textStyle: {
                                     color: '#fff',
-                                    fontSize: 16,
+                                    fontSize: '60%',
                                 },
 
                             },
