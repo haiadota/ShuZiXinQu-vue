@@ -20,8 +20,14 @@ function handlePoint(data){
 function handleLoading(){
     store.commit('handleLoadFlag', false)
 }
+function handleLoaded(){
+    store.commit('handleLoadingFlag', false)
+}
 function handleMenuFlag(){
     store.commit('handleMenuFlag', true)
+}
+function handleLoadPercent(data){
+    store.commit('handleLoadPercent', data.data)
 }
 EventBus.onEvent('SunshineSheQu', SunshineSheQu)
 EventBus.onEvent('carPage', CarXunCha)
@@ -30,3 +36,5 @@ EventBus.onEvent('liuhaolou', SixBuilding)
 EventBus.onEvent('handlePoint', handlePoint)
 EventBus.onEvent('loading', handleLoading)
 EventBus.onEvent('handleMenuFlag', handleMenuFlag)
+EventBus.onEvent('loaded', handleLoaded)
+EventBus.onEvent('loadPercent', handleLoadPercent)

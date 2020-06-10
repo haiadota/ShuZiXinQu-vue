@@ -21,39 +21,35 @@
                     <div class="right_bar"></div>
                 </div>
                 <div class="cell">
-                    <transition name="delay">
-                        <div v-if="index == navIndex" class="cell_active">
-                            <div class="outer_ring">
-                                <div class="inner_ring">
-                                    <div class="circle_bg">
-                                        <div class="tex">{{item}}</div>
-                                    </div>
-                                    <div class="rotation">
-                                        <div class="big_star"></div>
-                                        <div class="small_star"></div>
-                                    </div>
+                    <div v-if="index == navIndex" class="cell_active">
+                        <div class="outer_ring">
+                            <div class="inner_ring">
+                                <div class="circle_bg">
+                                    <div class="tex">{{item}}</div>
+                                </div>
+                                <div class="rotation">
+                                    <div class="big_star"></div>
+                                    <div class="small_star"></div>
                                 </div>
                             </div>
                         </div>
-                    </transition>
-                    <transition name="bounce">
-                        <div v-if="index != navIndex" class="cell_inactive" @click="handleRoutingHop(index)">
-                            <span class="left_top"></span>
-                            <span class="right_top"></span>
-                            <span class="right_bot"></span>
-                            <span class="left_bot"></span>
-                            <div class="tex">{{item}}</div>
-                        </div>
-                    </transition>
+                    </div>
+                    <div v-else class="cell_inactive" @click="handleRoutingHop(index)">
+                        <!--<span class="left_top"></span>-->
+                        <!--<span class="right_top"></span>-->
+                        <!--<span class="right_bot"></span>-->
+                        <!--<span class="left_bot"></span>-->
+                        <div class="tex">{{item}}</div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="some">
             <DateTime></DateTime>
             <div class="bar"></div>
-            <div class="tianqi"></div>
+            <div :class="['tianqi',weather]"></div>
             <div class="wendu"></div>
-            <div>16℃</div>
+            <div>{{temp}}</div>
         </div>
     </div>
 </template>
@@ -77,8 +73,10 @@
         },
         data() {
             return {
+                temp: '16℃',
+                weather: 'qing',
                 // navList: ["城市概览", "社区治理", "生态环保", "城乡建设", "经济活力","数据资源",'阳光社区','重点企业','巡查车','六号楼'],
-                navList: ["城市概览", "社区治理", "生态环保", "城乡建设", "经济活力", "数据资源"],
+                navList: ["城市概览", "社会治理", "生态环保", "城乡建设", "经济活力", "数据资源"],
                 roterList: ["Home", "SheQu", "HuanBao", "JianShe", "JingJi", "ShuJU", "SunshineSheQu", "KeyQiYe", "CarXunCha", "SixBuilding"],
             };
         },
@@ -89,8 +87,33 @@
                 this.$router.push('/' + this.roterList[value])
                 // this.handleActiveArr({name:'高新开发区'})
                 // this.handlePoint({name: '中心点', value: [125.2638816833496, 43.82486751538151, 100]})
-                Event['Tab'](this.roterList[value])
+                Event['Tab']()
             },
+        },
+        created() {
+            let that = this
+            this.axios.post('http://localhost:8099/test/formdata',
+                JSON.stringify({
+                    param: {city: "长春市"},
+                    url: "http://120.24.175.113:18884/warning/weatherforecast/index"
+                }),
+                {headers: {'Content-Type': 'application/json'}}// {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
+            ).then(res => {
+                if (res.data.statusCode == "200") {
+                    let obj = JSON.parse(res.data.data)
+                    that.temp = obj.data.temp
+                    switch (obj.data.weather) {
+                        case '雨':
+                            that.weather = 'yu'
+                            break
+                        case '多云':
+                            that.weather = 'duoyun'
+                            break
+                        default:
+                            that.weather = 'qing'
+                    }
+                }
+            }).catch(err => {})
         },
         mounted() {
             let value = window.location.hash.split('/')[1]
@@ -112,6 +135,7 @@
             top: 5px;
         }
     }
+
     .navigation_bar {
         width: 100%;
         display: flex;
@@ -151,7 +175,20 @@
             .tianqi {
                 width: 30px;
                 height: 30px;
-                background: url("../../public/image/qingtian.png") no-repeat;
+            }
+
+            .qing {
+                background: url("../../public/image/tianqi/qing.png") no-repeat;
+                background-size: 100% 100%;
+            }
+
+            .yu {
+                background: url("../../public/image/tianqi/yu.png") no-repeat;
+                background-size: 100% 100%;
+            }
+
+            .duoyun {
+                background: url("../../public/image/tianqi/duoyun.png") no-repeat;
                 background-size: 100% 100%;
             }
 
@@ -167,8 +204,8 @@
         .mid_view {
             flex: 1;
             height: 100%;
-            font-size: 0.3rem;
-            color: #68fffe;
+            font-size: 16px;
+            /*color: #68fffe;*/
             display: flex;
             justify-content: flex-start;
             align-items: center;
@@ -180,27 +217,27 @@
                 user-select: none;
                 height: 100%;
 
-                .tex {
-                    width: 0.7rem;
-                    letter-spacing: 0.05rem;
-                }
-
                 .cell {
-                    width: 1.8rem;
+                    /*width: 1.8rem;*/
                     height: 100%;
                     display: flex;
                     align-items: center;
                     position: relative;
 
                     .cell_inactive {
-                        width: 1.4rem;
-                        height: 1.12rem;
-                        margin: 0 0.2rem;
+                        /*width: 1.4rem;*/
+                        height: 0.9rem;
                         position: relative;
                         display: flex;
                         justify-content: center;
                         align-items: center;
                         cursor: pointer;
+                        background-image: url("../../public/image/btn.png");
+                        background-size: 100% 100%;
+
+                        .tex {
+                            padding: 0 20px 6px 15px;
+                        }
 
                         .left_top {
                             height: 0.14rem;
@@ -244,7 +281,7 @@
                     }
 
                     .cell_active {
-                        position: absolute;
+                        animation: bounce-in .5s;
 
                         .outer_ring {
                             padding: 0.12rem;
@@ -267,6 +304,13 @@
                                     align-items: center;
                                     border-radius: 50%;
                                     background: linear-gradient(to bottom right, rgba(58, 69, 255, 0.6) 0%, rgba(133, 238, 253, 0.6) 100%);
+
+                                    .tex {
+                                        width: 0.84rem;
+                                        height: 0.84rem;
+                                        letter-spacing: 0.05rem;
+                                        text-align: center;
+                                    }
                                 }
 
                                 .rotation {
@@ -341,7 +385,7 @@
     }
 
     .bounce-enter-active {
-        /*animation: bounce-in .5s;*/
+        animation: bounce-in .5s;
     }
 
     .bounce-leave-active {
@@ -366,7 +410,7 @@
         animation: delay-in 0.6s;
     }
 
-    @keyframes delay-in {
+    @keyframes bounce-in {
         0% {
             transform: scale(0);
         }

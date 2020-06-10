@@ -18,7 +18,7 @@ class EventBus {
             this.iframeWindow.postMessage(obj, '*');
             setTimeout(function () {
                 store.commit('handlebtnFlag', '')
-            }, 3*1000)
+            }, 0.5*1000)
         }
     }
 

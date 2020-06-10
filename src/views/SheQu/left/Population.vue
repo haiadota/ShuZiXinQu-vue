@@ -63,7 +63,7 @@
         .num {
             font-family: 'RuiZi';
             padding: 0 5px 0 20px;
-            font-size: 28px;
+            font-size: 24px;
         }
     }
     .list{

@@ -85,7 +85,7 @@ export default {
         margin-right: 4px;
         background: linear-gradient(
           90deg,
-          rgba(0, 246, 255, 1) 0%,
+          rgba(138, 255, 255, 1) 0%,
           rgba(0, 128, 248, 1) 100%
         );
         border-radius: 2px;

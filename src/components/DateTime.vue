@@ -71,7 +71,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .date {
-  color: #00fdfb;
   letter-spacing: 2px;
   font-size: 14px;
   display: flex;
@@ -79,7 +78,6 @@ export default {
 }
 .time {
   letter-spacing: 2px;
-  color: #00fdfb;
   font-size: 16px;
   display: flex;
   justify-content: center;

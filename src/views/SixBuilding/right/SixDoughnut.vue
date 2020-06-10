@@ -49,16 +49,18 @@
                     chart: {
                         type: 'pie',
                         backgroundColor: 'rgba(0,0,0,0)',
-                        options3d: {
-                            enabled: true,
-                            alpha: 45
-                        }
+                        // options3d: {
+                        //     enabled: true,
+                        //     alpha: 45
+                        // }
                     },
                     title: {
                         text: ''
                     },
                     legend:{
-                        labelFormat: '{name}<br>{y}人',
+                        labelFormatter: function () {
+                            return this.name ? (this.name + '<br>' + this.y + '人') : ''
+                        },
                         itemHight: 60,
                         align: 'right', //水平方向位置
                         verticalAlign: 'middle', //垂直方向位置
@@ -82,9 +84,10 @@
                                 format: '{point.name}'
                             },
                             showInLegend: true,
-                            innerSize: '80%',
+                            innerSize: '90%',
                             depth: 15,
-                            size: '120%'
+                            size: '120%',
+                            borderWidth: 0
                         }
                     },
                     series: [{
@@ -92,7 +95,9 @@
                         name: '数据资源',
                         data: [
                             {y: 69, name: '男性人数'},
-                            {y: 62,color: 'yellow', name: '女性人数'},
+                            {y: 1, name: '', color: 'rgba(0,0,0,0)'},
+                            {y: 62,color: '#ffc21e', name: '女性人数'},
+                            {y: 1, name: '', color: 'rgba(0,0,0,0)'},
                         ],
                     }]
                 }

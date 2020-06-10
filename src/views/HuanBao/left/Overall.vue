@@ -2,8 +2,8 @@
     <div class="main">
         <div class="dark">
             <img src="../../../../public/image/HuanBao/kongqi.png" alt="" class="image">
-            <span class="txt">空气达标率</span>
-            <div><span class="num">{{'78'}}</span> %<span></span></div>
+            <span class="txt">空气质量优良率</span>
+            <div><span class="num">{{kongqi}}</span></div>
         </div>
         <div class="light">
             <img src="../../../../public/image/HuanBao/shuizhi.png" alt="" class="image">
@@ -25,7 +25,23 @@
 
 <script>
     export default {
-        name: "Overall"
+        name: "Overall",
+        data() {
+            return {
+                kongqi: '80%'
+            }
+        },
+        created() {
+            let that = this
+            this.axios.post('http://localhost:8099/test/kshdatapost',
+                {"param": {"csid": 287}, "url": "http://120.24.175.113:18884/container/data/single"},
+                {headers: {'Content-Type': 'application/json'}}// {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
+            ).then(res => {
+                if (res.status == '200') {
+                    that.kongqi = res.data.data.data.val
+                }
+            }).catch(err=>{})
+        }
     }
 </script>
 
@@ -35,9 +51,9 @@
         height: 26%;
     }
 
-    .dark{
+    .dark {
         padding: 0 5px;
-        background: rgba(225,225,225,.26);
+        background: rgba(225, 225, 225, .26);
         height: 25%;
         line-height: 25%;
         text-align: left;
@@ -45,7 +61,8 @@
         justify-content: space-between;
         align-items: center;
     }
-    .light{
+
+    .light {
         padding: 0 5px;
         height: 25%;
         line-height: 20%;
@@ -54,11 +71,13 @@
         justify-content: space-between;
         align-items: center;
     }
-    .image{
+
+    .image {
         width: 30px;
         height: 30px;
     }
-    .txt{
+
+    .txt {
         flex: 1;
         text-indent: 10px;
     }

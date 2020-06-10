@@ -33,16 +33,18 @@
                     chart: {
                         type: 'pie',
                         backgroundColor: 'rgba(0,0,0,0)',
-                        options3d: {
-                            enabled: true,
-                            alpha: 45
-                        }
+                        // options3d: {
+                        //     enabled: true,
+                        //     alpha: 45
+                        // }
                     },
                     title: {
                         text: ''
                     },
                     legend:{
-                        labelFormat: '{name}{y}条',
+                        labelFormatter: function () {
+                            return this.name?(this.name + this.y+'条'):''
+                        },
                         itemHight: 60,
                         align: 'right', //水平方向位置
                         verticalAlign: 'middle', //垂直方向位置
@@ -61,16 +63,20 @@
                                 enabled: false
                             },
                             showInLegend: true,
-                            innerSize: '80%',
-                            depth: 15
+                            innerSize: '90%',
+                            depth: 15,
+                            borderWidth: 0
                         }
                     },
                     series: [{
                         name: '数据资源',
                         data: [
-                            {y: 560, name: '物联网数据',color:'#90ed7d'},
-                            {y: 791, name: '业务数据',color:'#7ce8ec'},
-                            {y: 791, name: '统计数据',color:'#7cb5ec'}
+                            {y: 560, name: '物联网数据',color:'#47fbf2'},
+                            {y: 10, name: '',color:'rgba(0,0,0,0)'},
+                            {y: 791, name: '业务数据',color:'#ffc21e'},
+                            {y: 10, name: '',color:'rgba(0,0,0,0)'},
+                            {y: 791, name: '统计数据',color:'#5397f8'},
+                            {y: 10, name: '',color:'rgba(0,0,0,0)'},
                         ]
                     }]
                 }
@@ -109,7 +115,7 @@
 
         .num {
             padding: 0 5px 0 20px;
-            font-size: 26px;
+            font-size: 24px;
             line-height: 16px;
         }
     }

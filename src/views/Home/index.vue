@@ -39,6 +39,7 @@
     import Community from './right/Wordcloud.vue'
     import First from './right/Doughnut.vue'
     import Tab3D from '@/components/Tab3D.vue'
+    import Event from "@/postMessage/Iframe.js";
 
     export default {
         name: 'Home',
@@ -65,7 +66,12 @@
                 ]
             }
         },
-        methods: {}
+        methods: {
+
+        },
+        mounted(){
+            Event['manyou']()
+        }
     }
 </script>
 

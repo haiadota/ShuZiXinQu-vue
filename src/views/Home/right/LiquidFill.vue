@@ -3,9 +3,8 @@
         <div class="txt">
             <div class="bar"></div>
             <div>实时空气质量</div>
-            <div><span class="num">{{'55'}}</span></div>
-            <div class="grade">{{'良'}}</div>
-            <div class="month">{{'四'}} 月</div>
+            <div><span class="num">{{aqi}}</span></div>
+            <div class="grade">{{quality}}</div>
         </div>
         <div class="title">
             <div>空气质量优良率</div>
@@ -25,6 +24,8 @@
         name: "LiquidFill",
         data() {
             return {
+                aqi: 56,
+                quality: '良',
                 myChart: null,
             }
         },
@@ -48,22 +49,6 @@
                         x: 'center',
                         y: 'center'
                     },
-                    // graphic: [{
-                    //     type: 'group',
-                    //     left: 'center',
-                    //     top: '60%',
-                    //     children: [{
-                    //         type: 'text',
-                    //         z: 100,
-                    //         left: '10',
-                    //         top: 'middle',
-                    //         style: {
-                    //             fill: '#aab2fa',
-                    //             text: '流量统计',
-                    //             font: '20px Microsoft YaHei'
-                    //         }
-                    //     }]
-                    // }],
                     series: [{
                         type: 'liquidFill',
                         radius: '80%',
@@ -148,8 +133,31 @@
         mounted() {
             this.myChartFirst = this.$echarts.init(this.$refs.first)
             this.myChartSecond = this.$echarts.init(this.$refs.second)
-            this.myChartFirst.setOption(this.option(0.78))
             this.myChartSecond.setOption(this.option(0.98))
+        },
+        created() {
+            let that = this
+            this.axios.get('http://localhost:8099/test/kshdataget',
+                {"param": {}, "url": "http://120.24.175.113:18884/home/airQuality"},
+                {headers: {'Content-Type': 'application/json'}}// {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
+            ).then(res => {
+                if (res.status == '200') {
+                    that.aqi = res.data.data.aqi
+                    that.quality = res.data.data.quality
+                }
+            })
+            this.axios.post('http://localhost:8099/test/kshdatapost',
+                {"param": {"csid": 287}, "url": "http://120.24.175.113:18884/container/data/single"},
+                {headers: {'Content-Type': 'application/json'}}// {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
+            ).then(res => {
+                if (res.status == '200') {
+                    that.$nextTick(() => {
+                        that.myChartFirst.setOption(that.option(res.data.data.data.val.split('%')[0] / 100))
+                    })
+                }
+            }).catch(err => {
+                that.myChartFirst.setOption(that.option(0.78))
+            })
         },
         beforeDestroy() {
             this.$echarts.dispose(this.myChartFirst)
@@ -180,18 +188,20 @@
 
         .num {
             padding: 0 5px 0 20px;
-            font-size: 26px;
+            font-size: 24px;
             line-height: 16px;
         }
 
         .grade {
-            width: 47px;
+            margin-left: 15px;
+            padding: 0 5px;
             height: 25px;
             background: linear-gradient(0deg, rgba(86, 171, 47, 0.6) 0%, rgba(168, 224, 99, 0.6) 100%);
             border-radius: 10px;
             text-align: center;
         }
-        .month{
+
+        .month {
             margin-left: 40px;
             font-size: 18px;
         }

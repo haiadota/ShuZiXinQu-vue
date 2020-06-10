@@ -42,21 +42,23 @@
                     chart: {
                         type: 'pie',
                         backgroundColor: 'rgba(0,0,0,0)',
-                        options3d: {
-                            enabled: true,
-                            alpha: 45
-                        }
+                        // options3d: {
+                        //     enabled: true,
+                        //     alpha: 45
+                        // }
                     },
                     title: {
                         text: ''
                     },
                     legend: {
-                        labelFormat: '{name}<br>{y}人',
+                        labelFormatter: function () {
+                            return this.name ? (this.name + '<br>' + this.y + '人') : ''
+                        },
                         align: 'right', //水平方向位置
                         verticalAlign: 'middle', //垂直方向位置
                         layout: 'vertical',
                         itemStyle: {
-                            'fontSize': '0.8vw',
+                            'fontSize': '0.72vw',
                             'color': '#fff',
                             // 'fontFamily': '微软雅黑',
                             'fontWeight': 'lighter'
@@ -69,16 +71,19 @@
                                 enabled: false
                             },
                             showInLegend: true,
-                            innerSize: '80%',
+                            innerSize: '90%',
                             depth: 15,
-                            size: '135%'
+                            size: '115%',
+                            borderWidth: 0
                         }
                     },
                     series: [{
                         name: '数据资源',
                         data: [
-                            {y: 2185, name: '本地户籍', color: '#7cb5ec'},
-                            {y: 335, name: '外地户籍', color: '#7ce8ec'},
+                            {y: 2185, name: '本地户籍'},
+                            {y: 10, name: '', color: 'rgba(0,0,0,0)'},
+                            {y: 335, name: '外地户籍', color: '#ffc21e'},
+                            {y: 10, name: '', color: 'rgba(0,0,0,0)'},
                         ]
                     }]
                 }

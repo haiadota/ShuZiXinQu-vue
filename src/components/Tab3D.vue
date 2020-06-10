@@ -26,7 +26,16 @@
 
     export default {
         name: "Tab3D",
+        data() {
+            return {
+                w: '80%',
+                myChart: null,
+            }
+        },
         computed: {
+            geoJson() {
+                return this.$store.state.changchunxinquGeojson
+            },
             pointInfo() {
                 return this.$store.state.point
             },
@@ -120,58 +129,50 @@
                 }
             }
         },
-        data() {
-            return {
-                w: '80%',
-                myChart: null,
-                uploadedDataURL: 'changchunxinqu.geojson',
-            }
-        },
+
         methods: {
             ...mapMutations(['handleActiveArr', 'handlePoint']),
         },
         mounted() {
             let that = this
             this.w = this.$refs.wrap.clientHeight + 'px'
-            this.axios(this.uploadedDataURL).then(function (geoJson) {
-                echarts.registerMap('xinqu', geoJson.data);
-                that.myChart = echarts.init(that.$refs.main)
-                that.myChart.setOption(that.option)
-                that.myChart.on('click', function (params) {
-                    let action = ''
-                    let position = []
-                    switch (params.name) {
-                        case '高新开发区':
-                            action = 'ToGaoXin'
-                            position = [125.2638816833496, 43.82486751538151]
-                            break
-                        case '北湖新区':
-                            action = 'ToBeiHu'
-                            position = [125.38627624511717, 44.014793040101814]
-                            break
-                        case '长德新区':
-                            action = 'ToChangDe'
-                            position = [125.49819946289064, 44.0609461392979]
-                            break
-                        case '空港新区':
-                            action = 'ToKongGang'
-                            position = [125.71929931640625, 44.04614157509527]
-                            break
-                    }
-                    that.handlePoint({name: '中心点', value: position})
-                    Event['FlyToXinQu'](action)
-                })
-            }).catch(err => {
-                console.log(err)
+            echarts.registerMap('xinqu', this.geoJson);
+            that.myChart = echarts.init(that.$refs.main)
+            that.myChart.setOption(that.option)
+            that.myChart.on('click', function (params) {
+                let action = ''
+                let position = []
+                switch (params.name) {
+                    case '高新开发区':
+                        action = 'ToGaoXin'
+                        position = [125.2638816833496, 43.82486751538151]
+                        break
+                    case '北湖新区':
+                        action = 'ToBeiHu'
+                        position = [125.38627624511717, 44.014793040101814]
+                        break
+                    case '长德新区':
+                        action = 'ToChangDe'
+                        position = [125.49819946289064, 44.0609461392979]
+                        break
+                    case '空港新区':
+                        action = 'ToKongGang'
+                        position = [125.71929931640625, 44.04614157509527]
+                        break
+                }
+                that.handlePoint({name: '中心点', value: position})
+                Event['FlyToXinQu'](action)
             })
         },
         watch: {
             pointInfo() {
-                this.myChart.setOption(this.option)
+                if (this.myChart)
+                    this.myChart.setOption(this.option)
             }
         },
         beforeDestroy() {
-            echarts.dispose(this.myChart)
+            if (this.myChart)
+                echarts.dispose(this.myChart)
         }
     }
 </script>
@@ -186,6 +187,7 @@
             /*background: rgba(255,255,255,0.8);*/
             padding: 0 5px;
             font-family: 'FZZZHUNHJW';
+            color: #1ed2e3;
         }
 
         .three_line {

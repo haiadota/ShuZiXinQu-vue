@@ -169,11 +169,11 @@
                             name: '第一产业',
                             stack: "基金支出",
                             type: "bar",
-                            barMaxWidth: 10,
+                            barWidth: 8,
                             barGap: "10%",
                             itemStyle: {
                                 normal: {
-                                    color: "#eee",
+                                    color: "#ffc21e",
                                     label: {
                                         show: false,
                                         textStyle: {
@@ -188,7 +188,7 @@
                             name: '第二产业',
                             stack: "基金支出",
                             type: "bar",
-                            barMaxWidth: 10,
+                            barWidth: 8,
                             barGap: "10%",
                             itemStyle: {
                                 normal: {
@@ -207,11 +207,11 @@
                             name: '第三产业',
                             stack: "基金支出",
                             type: "bar",
-                            barMaxWidth: 10,
+                            barWidth: 8,
                             barGap: "10%",
                             itemStyle: {
                                 normal: {
-                                    color: "#64e694",
+                                    color: "#47fbf2",
                                     label: {
                                         show: false,
                                         textStyle: {

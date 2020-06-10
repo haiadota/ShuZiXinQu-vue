@@ -5,6 +5,9 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
+        LoadPercent: 0,
+        changchunxinquGeojson: {},
+        LoadingFlag: false,
         menuFlag: false,
         LoadFlag: false,
         btnFlag: '', // 按钮延时开关值
@@ -16,17 +19,25 @@ const store = new Vuex.Store({
                 43.919658762067655]
         }],
         CarXunCha: false, // 显示巡查车页面
-        KeyQiYe: false, // 显示重点企业页面
         activeArr: [ // 小地图区域
-            {name: '高新开发区', value: 0},
-            {name: '北湖新区', value: 0},
-            {name: '长德新区', value: 0},
-            {name: '空港新区', value: 0}
+            { name: '高新开发区', value: 0 },
+            { name: '北湖新区', value: 0 },
+            { name: '长德新区', value: 0 },
+            { name: '空港新区', value: 0 }
         ]
     },
     mutations: {
+        handleLoadPercent(state, payLoad) {
+            state.LoadPercent = payLoad
+        },
+        handleGeojson(state, payLoad) {
+            state.changchunxinquGeojson = payLoad
+        },
         handleMenuFlag(state, payLoad) {
             state.menuFlag = payLoad
+        },
+        handleLoadingFlag(state, payLoad) {
+            state.LoadingFlag = payLoad
         },
         handleLoadFlag(state, payLoad) {
             state.LoadFlag = payLoad
@@ -34,14 +45,11 @@ const store = new Vuex.Store({
         handlebtnFlag(state, payLoad) {
             state.btnFlag = payLoad
         },
-        handleKeyQiYe(state, payLoad) {
-            state.KeyQiYe = payLoad
-        },
         handleShowNav(state, payLoad) {
             state.showNav = payLoad
         },
         handlePoint(state, payLoad) {
-            state.point = [{name:payLoad.name||'',value:[...payLoad.value,100]}]
+            state.point = [{ name: payLoad.name || '', value: [...payLoad.value, 100] }]
         },
         handleCarXunCha(state, payLoad) {
             state.CarXunCha = payLoad
@@ -53,9 +61,9 @@ const store = new Vuex.Store({
             let arr = []
             state.activeArr.forEach(function (i) {
                 if (i.name == payLoad.name) {
-                    arr.push({name: i.name, value: 1})
+                    arr.push({ name: i.name, value: 1 })
                 } else {
-                    arr.push({name: i.name, value: 0})
+                    arr.push({ name: i.name, value: 0 })
                 }
             })
             state.activeArr = arr

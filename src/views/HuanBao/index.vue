@@ -32,6 +32,7 @@
     import AirLine from './right/AirBar.vue'
     import FourBar3d from './right/FourBar3d.vue'
     import QiYeScrollList from './right/QiYeScrollList.vue'
+    import Event from "@/postMessage/Iframe.js";
 
 
     export default {
@@ -52,12 +53,15 @@
         data() {
             return {
                 btnList: [
-                    {name: '空气监测点', action: 'KongqiJiance'},
                     {name: '重点监控企业', action: 'ZhongdianQiye'},
+                    {name: '空气监测点', action: 'KongqiJiance'},
                 ]
             }
         },
-        methods: {}
+        methods: {},
+        mounted(){
+            Event['ZhongdianQiye']()
+        }
     }
 </script>
 

@@ -34,7 +34,10 @@
     import Migration from './right/Migration.vue'
     import SheQuDoughnut from './right/SheQuDoughnut.vue'
     import TwoBar from './right/TwoBar.vue'
+    import Bar3dd from './right/Bar3dd.vue'
+
     import RenKouScrollList from './right/RenKouScrollList.vue'
+    import Event from "@/postMessage/Iframe.js";
 
     export default {
         name: 'SheQu',
@@ -50,7 +53,8 @@
             Migration,
             SheQuDoughnut,
             TwoBar,
-            RenKouScrollList
+            RenKouScrollList,
+            Bar3dd
         },
         data() {
             return {
@@ -60,7 +64,10 @@
                 ]
             }
         },
-        methods: {}
+        methods: {},
+        mounted(){
+            Event['shequguihua']()
+        }
     }
 </script>
 

@@ -117,6 +117,6 @@
 
 <style scoped>
     .main{
-        height: 26%;
+        height: 30%;
     }
 </style>

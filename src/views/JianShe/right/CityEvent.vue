@@ -21,17 +21,17 @@
                     chart: {
                         type: 'column',
                         backgroundColor: 'rgba(0,0,0,0)',
-                        options3d: {
-                            enabled: true,
-                            alpha: 15,
-                            beta: 15,
-                            viewDistance: 90,
-                            depth: 40,
-                        },
+                        // options3d: {
+                        //     enabled: true,
+                        //     alpha: 15,
+                        //     beta: 15,
+                        //     viewDistance: 90,
+                        //     depth: 40,
+                        // },
                         marginTop: 20,
                         marginBottom: 35,
-                        marginLeft: 25,
-                        marginRight: -10
+                        marginLeft: 50,
+                        marginRight: 0
                     },
                     title: {
                         text: ''
@@ -77,7 +77,8 @@
                         column: {
                             stacking: 'normal',
                             depth: 12,
-                            pointWidth: 10,
+                            pointWidth: 7,
+                            borderColor: ""
                         }
                     },
                     series: [{

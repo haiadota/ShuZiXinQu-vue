@@ -40,7 +40,7 @@
                         data: ["资产值", "同比增长"],
                         top: "10%",
                         textStyle: {
-                            fontSize: 26,
+                            fontSize: 21,
                             color: "#ffffff"
                         }
                     },
@@ -149,10 +149,10 @@
                             symbolSize: 10, //标记的大小
                             itemStyle: {
                                 //折线拐点标志的样式
-                                color: "#77eca6"
+                                color: "#ffffff"
                             },
                             lineStyle: {
-                                color: "#77eca6"
+                                color: "#ffffff"
                             },
                             areaStyle: {
                                 color: "rgba(5,140,255, 0.2)"
@@ -162,14 +162,14 @@
                         {
                             name: "资产值",
                             type: "bar",
-                            barWidth: 10,
+                            barWidth: 8,
                             itemStyle: {
                                 normal: {
                                     color:new echarts.graphic.LinearGradient(
                                         0, 1, 0, 0,
                                         [
-                                            {offset: 1, color: '#1A83D2'},
-                                            {offset: 0, color: '#19F4D2'}
+                                            {offset: 1, color: '#0080f8'},
+                                            {offset: 0, color: '#8affff'}
                                         ]
                                     )
                                 }

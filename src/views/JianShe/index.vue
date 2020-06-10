@@ -38,6 +38,7 @@
     import BoxLine from './right/BoxLine.vue'
     import CityEvent from './right/CityEvent.vue'
     import CarScrollList from './right/CarScrollList.vue'
+    import Event from "@/postMessage/Iframe.js";
 
     export default {
         name: 'JianShe',
@@ -66,7 +67,10 @@
                 ]
             }
         },
-        methods: {}
+        methods: {},
+        mounted(){
+            Event['ZhongdaXiangmu']()
+        }
     }
 </script>
 

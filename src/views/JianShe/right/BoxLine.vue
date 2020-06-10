@@ -38,12 +38,12 @@
                     yAxis: {
                         type: 'value',
                         axisLabel: {
-                                show: true,
-                                textStyle: {
-                                    color: '#fff',
-                                    fontSize: '70%',
-                                },
+                            show: true,
+                            textStyle: {
+                                color: '#fff',
+                                fontSize: '70%',
                             },
+                        },
                     },
                     tooltip: {
                         // trigger: 'none',
@@ -60,9 +60,9 @@
                                 x2: 0,
                                 y2: 1,
                                 colorStops: [{
-                                    offset: 0, color: '#1A83D2' // 0% 处的颜色
+                                    offset: 0, color: '#006fc1' // 0% 处的颜色
                                 }, {
-                                    offset: 1, color: '#19F4D2' // 100% 处的颜色
+                                    offset: 1, color: '#c2e3fe' // 100% 处的颜色
                                 }],
                                 global: false // 缺省为 false
                             }

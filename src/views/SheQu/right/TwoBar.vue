@@ -7,292 +7,108 @@
         name: "TwoBar",
         data() {
             return {
-                myChart: null,
-                age_gap: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75-79', '80-84', '85-89', '90-94', '95+'],
-                data_age: [{
-                    "year": "2018",
-                    "age_data": {
-                        "male": [3.135, 2.995, 2.951, 2.756, 3.152, 4.168, 4.092, 3.627, 3.718, 4.552, 4.275, 3.076, 2.978, 2.357, 1.477, 0.939, 0.564, 0.251, 0.058, 0.011],
-                        "female": [2.752, 2.537, 2.487, 2.333, 2.793, 3.955, 4.05, 3.527, 3.583, 4.392, 4.186, 3.026, 2.964, 2.431, 1.564, 1.053, 0.733, 0.352, 0.119, 0.029]
-                    }
-                }]
+                chart: null,
+                categories: ['0-4', '5-9', '10-14', '15-19',
+                    '20-24', '25-29', '30-34', '35-39', '40-44',
+                    '45-49', '50-54', '55-59', '60-64', '65-69',
+                    '70-74', '75-79', '80-84', '85-89', '90-94',
+                    '95-99', '100 + '],
             }
         },
         computed: {
             option() {
+                let that = this
                 return {
-                    baseOption: {
-                        backgroundColor: 'rgba(0,0,0,0)',
-                        timeline: {
-                            show: false,
-                            axisType: 'category',
-                            tooltip: {
-                                show: true,
-                                formatter: function (params) {
-                                    console.log(params);
-                                    return params.name + '年年龄结构';
-                                }
-                            },
-                            autoPlay: true,
-                            currentIndex: 6,
-                            playInterval: 1000,
-                            label: {
-                                normal: {
-                                    show: true,
-                                    interval: 'auto',
-                                    formatter: '{value}年',
-                                },
-                            },
-                            data: ['2018'],
-                        },
-
-                        legend: {
-                            data: ['男性', '女性'],
-                            top: 0,
-                            right: '20%',
-                            textStyle: {
-                                color: '#fff',
-                                fontSize: '0.7vw',
-                            },
-                        },
-                        tooltip: {
-                            show: true,
-                            trigger: 'axis',
-                            formatter: '{b}<br/>{a}: {c}%',
-                            textStyle: {
-                                fontSize: '80%',
-                            },
-                            axisPointer: {
-                                type: 'shadow',
-                            }
-                        },
-
-                        grid: [{
-                            show: false,
-                            left: '15%',
-                            right: '0',
-                            top: '10%',
-                            bottom: 10,
-                            containLabel: true,
-                            width: '40%',
-                        }, {
-                            show: false,
-                            left: '8%',
-                            top: '15%',
-                            bottom: 10,
-                            width: '0%',
-                        }, {
-                            show: false,
-                            left: '55%',
-                            top: '10%',
-                            bottom: 10,
-                            containLabel: true,
-                            width: '40%',
-                        }],
-
-                        xAxis: [{
-                            type: 'value',
-                            inverse: true,
-                            max: 6,
-                            min: 0,
-                            axisLine: {
-                                show: false,
-                            },
-                            axisTick: {
-                                show: false,
-                            },
-                            position: 'top',
-                            axisLabel: {
-                                show: true,
-                                textStyle: {
-                                    color: '#fff',
-                                    fontSize: '70%',
-                                },
-                            },
-                            splitLine: {
-                                show: true,
-                                lineStyle: {
-                                    color: '#1F2022',
-                                    width: 1,
-                                    type: 'solid',
-                                },
-                            },
-                        }, {
-                            gridIndex: 1,
-                            show: false,
-
-                        }, {
-                            gridIndex: 2,
-                            max: 6,
-                            min: 0,
-                            type: 'value',
-                            axisLine: {
-                                show: false,
-                            },
-                            axisTick: {
-                                show: false,
-                            },
-                            position: 'top',
-                            axisLabel: {
-                                show: true,
-                                textStyle: {
-                                    color: '#fff',
-                                    fontSize: '70%',
-                                },
-                            },
-                            splitLine: {
-                                show: true,
-                                lineStyle: {
-                                    color: '#1F2022',
-                                    width: 1,
-                                    type: 'solid',
-                                },
-                            },
-                        }],
-                        yAxis: [{
-                            type: 'category',
-                            inverse: false,
-                            position: 'right',
-                            axisLine: {
-                                show: false
-                            },
-                            axisTick: {
-                                show: false
-                            },
-                            axisLabel: {
-                                show: false,
-                                margin: 0,
-                                textStyle: {
-                                    color: '#fff',
-                                    fontSize: 16,
-                                },
-
-                            },
-                            data: this.age_gap
-                        }, {
-                            gridIndex: 1,
-                            type: 'category',
-                            inverse: false,
-                            position: 'left',
-                            axisLine: {
-                                show: false
-                            },
-                            axisTick: {
-                                show: false
-                            },
-                            axisLabel: {
-                                show: true,
-                                textStyle: {
-                                    color: '#fff',
-                                    fontSize: '60%',
-                                },
-
-                            },
-                            data: this.age_gap.map(function (value) {
-                                return {
-                                    value: value,
-                                    textStyle: {
-                                        align: 'center',
-                                    }
-                                }
-                            }),
-                        }, {
-                            gridIndex: 2,
-                            type: 'category',
-                            inverse: false,
-                            position: 'left',
-                            axisLine: {
-                                show: true
-                            },
-                            axisTick: {
-                                show: true
-                            },
-                            axisLabel: {
-                                show: false,
-                                textStyle: {
-                                    color: '#fff',
-                                    fontSize: 12,
-                                },
-
-                            },
-                            data: this.age_gap,
-                        }],
-                        series: [],
-
+                    credits: {
+                        enabled: false,
                     },
-
-                    options: [{
-                        series: [{
-                            name: '男性',
-                            type: 'bar',
-                            barGap: 5,
-                            barWidth: 10,
-                            label: {
-                                normal: {
-                                    show: false,
-                                },
-                                emphasis: {
-                                    show: true,
-                                    position: 'left',
-                                    offset: [0, 0],
-                                    textStyle: {
-                                        color: '#fff',
-                                        fontSize: 14,
-                                    },
-                                },
-                            },
-                            itemStyle: {
-                                normal: {
-                                    color: '#08d1ff',
-                                },
-                                emphasis: {
-                                    color: '#08C7AE',
-                                },
-                            },
-                            data: this.data_age[0].age_data.male,
-                        },
-                            {
-                                name: '女性',
-                                type: 'bar',
-                                barGap: 20,
-                                barWidth: 10,
-                                xAxisIndex: 2,
-                                yAxisIndex: 2,
-                                label: {
-                                    normal: {
-                                        show: false,
-                                    },
-                                    emphasis: {
-                                        show: true,
-                                        position: 'right',
-                                        offset: [0, 0],
-                                        textStyle: {
-                                            color: '#fff',
-                                            fontSize: 14,
-                                        },
-                                    },
-                                },
-                                itemStyle: {
-                                    normal: {
-                                        color: '#ed443d',
-                                    },
-                                    emphasis: {
-                                        color: '#08C7AE',
-                                    },
-                                },
-                                data: this.data_age[0].age_data.female,
+                    chart: {
+                        type: 'bar',
+                        backgroundColor: 'rgba(0,0,0,0)',
+                    },
+                    legend: {
+                        align: 'center', //水平方向位置
+                        verticalAlign: 'top', //垂直方向位置
+                        y: -15, //距离x轴的距离
+                        itemStyle: {
+                            'fontSize': '0.6vw',
+                            color: '#fff'
+                        }
+                    },
+                    title: {text: ''},
+                    xAxis: [{
+                        lineWidth :0,//去掉x轴线
+                        categories: this.categories,
+                        reversed: false,
+                        labels: {
+                            style: {
+                                'fontSize': '0.6vw',
+                                color: '#fff'
                             }
-                        ]
+                        },
+                    }, {
+                        // 显示在右侧的镜像 xAxis （通过 linkedTo 与第一个 xAxis 关联）
+                        lineWidth :0,//去掉x轴线
+                        opposite: true,
+                        reversed: false,
+                        categories: this.categories,
+                        linkedTo: 0,
+                        labels: {
+                            style: {
+                                'fontSize': '0.6vw',
+                                color: '#fff'
+                            }
+                        },
+                    }],
+                    yAxis: {
+                        gridLineWidth: 0,
+                        title: {text: null},
+                        labels: {
+                            style: {
+                                'fontSize': '0.6vw',
+                                color: '#fff'
+                            },
+                            formatter: function () {
+                                return (Math.abs(this.value) / 1000000) + '万';
+                            }
+                        },
+                        min: -4000000,
+                        max: 4000000
+                    },
+                    plotOptions: {
+                        series: {
+                            stacking: 'normal',
+                            borderColor: ''
+                        },
+                    },
+                    tooltip: {
+                        formatter: function () {
+                            return '<b>' + this.series.name + ', age ' + this.point.category + '</b><br/>' +
+                                '人口: ' + that.$Highcharts.numberFormat(Math.abs(this.point.y), 0);
+                        }
+                    },
+                    series: [{
+                        name: '男',
+                        data: [-1746181, -1884428, -2089758, -2222362, -2537431, -2507081, -2443179,
+                            -2664537, -3556505, -3680231, -3143062, -2721122, -2229181, -2227768,
+                            -2176300, -1329968, -836804, -354784, -90569, -28367, -3878]
+                    }, {
+                        name: '女',
+                        color:'#ba7871',
+                        data: [1656154, 1787564, 1981671, 2108575, 2403438, 2366003, 2301402, 2519874,
+                            3360596, 3493473, 3050775, 2759560, 2304444, 2426504, 2568938, 1785638,
+                            1447162, 1005011, 330870, 130632, 21208]
                     }]
-                };
+                }
             }
         },
         mounted() {
-            this.myChart = this.$echarts.init(this.$refs.main)
-            this.myChart.setOption(this.option)
+            this.initChart();
         },
-        beforeDestroy() {
-            this.$echarts.dispose(this.myChart)
+        methods: {
+            initChart() {
+                this.chart = new this.$Highcharts.Chart(this.$refs.main, this.option);
+            }
         }
     }
 </script>

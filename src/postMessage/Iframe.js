@@ -1,11 +1,19 @@
 import EventBus from '@/postMessage/EventBus';
 import store from '@/store'
+import axios from 'axios'
 
 export default {
     FlyToXinQu(data = {}) {
         EventBus.postMessage({type: 'FlyToXinQu', data});
     },
     VideoLayer(data = {}) {
+        // axios.post('http://120.24.175.113:18884/monitor/device/getallvideos')
+        //     .then(function (response) {
+        //         console.log(response);
+        //     })
+        //     .catch(function (error) {
+        //         console.log(error);
+        //     });
         EventBus.postMessage({type: 'VideoLayer', data});
     },
     BarLayer(data = {}) {
@@ -60,5 +68,14 @@ export default {
     },
     createSheQu(data = {}) {
         EventBus.postMessage({type: 'createSheQu'});
+    },
+    manyou(data = {}) {
+        EventBus.postMessage({type: 'manyou'});
+    },
+    showQiYeCampus(data = {}) {
+        EventBus.postMessage({type: 'showQiYeCampus', data: data});
+    },
+    start(data = {}) {
+        EventBus.postMessage({type: 'start'});
     },
 };

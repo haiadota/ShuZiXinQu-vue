@@ -32,6 +32,7 @@
     import ChanYeJieGou from './right/ChanYeJieGou.vue'
     import GuDingZiChan from './right/GuDingZiChan.vue'
     import ChanYeScrollList from './right/ChanYeScrollList.vue'
+    import Event from "@/postMessage/Iframe.js";
 
     export default {
         name: 'JingJi',
@@ -55,7 +56,10 @@
                 ]
             }
         },
-        methods: {}
+        methods: {},
+        mounted(){
+            Event['ChanYeLayer']()
+        }
     }
 </script>
 

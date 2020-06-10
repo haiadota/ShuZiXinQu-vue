@@ -33,16 +33,19 @@
                     chart: {
                         type: 'pie',
                         backgroundColor: 'rgba(0,0,0,0)',
-                        options3d: {
-                            enabled: true,
-                            alpha: 45
-                        }
+                        // options3d: {
+                        //     enabled: true,
+                        //     alpha: 45
+                        // }
                     },
                     title: {
                         text: ''
                     },
                     legend:{
-                        labelFormat: '{name}<br>{y}件',
+                        // labelFormat: '{name}<br>{y}件',
+                        labelFormatter: function () {
+                            return this.name?(this.name +'<br>'+ this.y+'件'):''
+                        },
                         itemHight: 60,
                         align: 'right', //水平方向位置
                         verticalAlign: 'middle', //垂直方向位置
@@ -55,7 +58,7 @@
                         }
                     },
                     tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        // pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
                     },
                     plotOptions: {
                         pie: {
@@ -66,16 +69,19 @@
                                 format: '{point.name}'
                             },
                             showInLegend: true,
-                            innerSize: '80%',
+                            innerSize: '90%',
                             depth: 15,
+                            borderWidth: 0
                         }
                     },
                     series: [{
                         type: 'pie',
-                        name: '数据资源',
+                        name: '社区事件分析',
                         data: [
                             {y: 986, name: '事件已处理'},
-                            {y: 246,color: 'yellow', name: '事件未处理'},
+                            {y: 10, name: '',color:'rgba(0,0,0,0)'},
+                            {y: 246,color: '#ffc21e', name: '事件未处理'},
+                            {y: 10, name: '',color:'rgba(0,0,0,0)'},
                         ],
                     }]
                 }

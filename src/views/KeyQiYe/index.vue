@@ -64,7 +64,7 @@
         methods: {
             fanhui() {
                 this.$router.go(-1)
-                Event['ZhongdianQiye']()
+                // Event['ZhongdianQiye']()
             }
         },
         created(){
@@ -77,6 +77,8 @@
                     {title:'主要污染物指标',num:'氨氮、总磷、总氮'},
                 ]
             }
+            let coordinates = obj.value||[125.248592, 43.789325]
+            Event['showQiYeCampus']({"coordinates": coordinates})
         }
     }
 </script>

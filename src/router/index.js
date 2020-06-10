@@ -36,34 +36,8 @@ export default new VueRouter({
         },
         {
             path: '/SunshineSheQu',
+            name: 'SunshineSheQu',
             component: resolve => require(['../views/SunshineSheQu/index.vue'], resolve),
-            beforeEnter:(to,from,next) => {
-                if(from.matched[0]){
-                    let path = from.matched[0].path
-                   if(path.indexOf('SixBuilding')!=1){
-                       Event['createSheQu']()
-                   }
-                }else{
-                    postmessage()
-                }
-                function postmessage(){
-                    let iframe = document.getElementById("3dIframe");
-                    if (iframe.attachEvent){
-                        iframe.attachEvent("onload", function(){
-                            setTimeout(function(){
-                                Event['createSheQu']()
-                            },9000)
-                        });
-                    } else {
-                        iframe.onload = function(){
-                            setTimeout(function(){
-                                Event['createSheQu']()
-                            },9000)
-                        }
-                    }
-                }
-                next()
-            }
         },
         {
             path: '/KeyQiYe',
