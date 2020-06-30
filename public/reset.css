@@ -1,0 +1,138 @@
+*{word-wrap:break-word}
+html,body,h1,h2,h3,h4,h5,h6,hr,p,iframe,dl,dt,dd,ul,ol,li,pre,form,button,input,textarea,th,td,fieldset{margin:0;padding:0}
+ul,ol,dl{list-style-type:none}
+html,body{*position:static;width: 100%;height: 100%;overflow: hidden;}
+
+html{font-family: sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#ffffff;font-size: 2.6vw}
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:400}
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}
+input,button{overflow: visible;vertical-align:middle;outline:none}
+a,area{outline:none;}
+a{text-decoration:none;cursor: pointer}
+a:hover{text-decoration:underline;outline:none}
+a.ie6:hover{zoom:1}
+a:focus{outline:none}
+a:hover,a:active{outline:none}:focus{outline:none}
+sub,sup{vertical-align:baseline}
+button,input[type="button"], input[type="submit"] {line-height:normal !important}
+/*img*/
+img{border:0;vertical-align:middle}
+a img,img{-ms-interpolation-mode:bicubic}
+.img-responsive{max-width: 100%;height: auto}
+
+/*HTML5 reset*/
+header,footer,section,aside,details,menu,article,section,nav,address,hgroup,figure,figcaption,legend{display:block;margin:0;padding:0}time{display:inline}
+audio,canvas,video{display:inline-block;*display:inline;*zoom:1}
+audio:not([controls]){display:none}
+legend{width:100%;margin-bottom:20px;line-height:40px;border:0;border-bottom:1px solid #e5e5e5}
+svg:not(:root) {overflow: hidden}
+fieldset {border-width:0;padding: 0.35em 0.625em 0.75em;margin: 0 2px;border: 1px solid #c0c0c0}
+input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button {height: auto}
+input[type="search"] {-webkit-appearance: textfield; /* 1 */-moz-box-sizing: content-box;-webkit-box-sizing: content-box; /* 2 */box-sizing: content-box}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration {-webkit-appearance: none}
+/*
+Name:			style_clearfix
+Example:		class="clearfix|cl"
+Explain:		Clearfix（简写cl）避免因子元素浮动而导致的父元素高度缺失能问题
+*/
+
+.float_left{float:left}
+.float_right{float:right}
+.cl:after,.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}.cl,.clearfix{zoom:1}
+.selectablefalse{user-select: none}
+.event_all{pointer-events: all}
+.event_none{pointer-events: none}
+.box{height: 100%;width: 100%}
+
+.main_view{display: flex;position: relative}
+.mid_view{flex: 1;display: flex;justify-content: center;align-items: center;position:relative}
+.left_view{box-sizing:content-box;width:330px;height:100%;position: relative;padding: 8px 15px 0 4px;pointer-events: all;animation: slide_left 1s linear;}
+.right_view{box-sizing:content-box;width: 350px;height:100%;position: relative;padding: 0rem 5px 0 .2rem;pointer-events: all;animation: slide_right 1s linear;}
+/*.left_view:after{*/
+    /*content: '';*/
+    /*display: block;*/
+    /*width: 0.04rem;*/
+    /*height: 45%;*/
+    /*position: absolute;*/
+    /*right: 0;*/
+    /*top: 22%;*/
+    /*background: rgba(60,255,248,0.2);*/
+/*}*/
+/*.right_view:after{*/
+    /*content: '';*/
+    /*display: block;*/
+    /*width: 0.04rem;*/
+    /*height: 45%;*/
+    /*position: absolute;*/
+    /*left: -0.02rem;*/
+    /*top: 22%;*/
+    /*background: rgba(60,255,248,0.2);*/
+/*}*/
+@keyframes slide_left {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+@keyframes slide_right {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+.left_view .white_bar{
+    width: 0.02rem;
+    height: 76%;
+    position: absolute;
+    right: 0.15rem;
+    top: 8%;
+    background: rgba(153,255,255,0.45);
+}
+.right_view .content{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0 2px 0 8px;
+    border-radius: .2rem .2rem 0 0;
+    position: relative;
+}
+.right_view .border_right{
+    width: 0.02rem;
+    height: 100%;
+    position: absolute;
+    right: -3px;
+    background: url("/image/border-right.png") center no-repeat;
+    background-size: 100% 100%;
+}
+.right_view .border_left{
+    width: 0.02rem;
+    height: 100%;
+    position: absolute;
+    left: 0.02rem;
+    background: url("/image/border-left.png") center no-repeat;
+    background-size: 100% 100%;
+}
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-leave {
+    opacity: 1;
+}
+
+.fade-enter-active {
+    transition: opacity 0.5s;
+}
+
+.fade-leave-active {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.num{
+    font-family: 'RuiZi';
+    font-size: 21px;
+}
