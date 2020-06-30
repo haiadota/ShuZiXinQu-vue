@@ -1,9 +1,9 @@
 <template>
-    <div class="main">
-        <div  v-for="(item,index) in arr" :class="index%2?'light':'dark'">
+    <div class="main" ref="main">
+        <div  v-for="(item,index) in arr" :class="index%2?'light':'dark'" :key="index">
             <img :src="picArr[index]" alt="" class="image">
             <span class="txt">{{item.title}}</span>
-            <span><span>{{item.num}}</span></span>
+            <span class="right_fade"><span>{{item.num}}</span></span>
         </div>
     </div>
 </template>
@@ -46,7 +46,55 @@
                     {title:'物业联系人',num:'张先生'},
                     {title:'物业联系电话',num:'157****5632'},
                     {title:'总车位数',num:'500个'},
-                ]
+                ],
+                myTimer1: null,
+                myTimer2: null
+            }
+        },
+        methods: {
+            firstShow() {
+                let arr = this.$refs.main.getElementsByClassName('txt')
+                let i = 0
+                let that = this
+                this.myTimer1 = setInterval(function () {
+                    if (i == arr.length) {
+                        clearInterval(that.myTimer1)
+                        that.myTimer1 = null
+                    } else {
+                        arr[i].className = 'txt slideIn'
+                    }
+                    i++
+                }, 400)
+            },
+            secondShow() {
+                let arr = this.$refs.main.getElementsByClassName('right_fade')
+                let i = -2
+                let that = this
+                this.myTimer2 = setInterval(function () {
+                    if (i == arr.length) {
+                        clearInterval(that.myTimer2)
+                        that.myTimer2 = null
+                    } else {
+                        if (arr[i]) {
+                            arr[i].className = 'right_fade slideIn'
+                        }
+                    }
+                    i++
+                }, 400)
+            }
+        },
+        mounted() {
+            this.firstShow()
+            this.secondShow()
+        },
+        beforeDestroy() {
+            if (this.myTimer1) {
+                clearInterval(this.myTimer1)
+                this.myTimer1 = null
+            }
+            if (this.myTimer2) {
+                clearInterval(this.myTimer2)
+                this.myTimer2 = null
             }
         }
     }
@@ -81,5 +129,6 @@
     .txt{
         flex: 1;
         text-indent: 10px;
+        visibility: hidden;
     }
 </style>

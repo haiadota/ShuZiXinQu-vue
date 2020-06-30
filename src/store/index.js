@@ -5,6 +5,8 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
+        buildInfoFlag:false,
+        buildInfoTable:[],
         LoadPercent: 0,
         changchunxinquGeojson: {},
         LoadingFlag: false,
@@ -27,6 +29,13 @@ const store = new Vuex.Store({
         ]
     },
     mutations: {
+        handleBuildInfoFlag(state, payLoad) {
+            state.buildInfoFlag = true
+            state.buildInfoTable = payLoad
+        },
+        closeBuildInfoFlag(state, payLoad) {
+            state.buildInfoFlag = false
+        },
         handleLoadPercent(state, payLoad) {
             state.LoadPercent = payLoad
         },

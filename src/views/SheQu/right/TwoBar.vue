@@ -43,7 +43,7 @@
                         labels: {
                             style: {
                                 'fontSize': '0.6vw',
-                                color: '#fff'
+                                'color': 'rgba(200,200,200)'
                             }
                         },
                     }, {
@@ -56,7 +56,7 @@
                         labels: {
                             style: {
                                 'fontSize': '0.6vw',
-                                color: '#fff'
+                                'color': 'rgba(200,200,200)'
                             }
                         },
                     }],

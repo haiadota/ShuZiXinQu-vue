@@ -39,19 +39,26 @@
                     legend: {
                         itemWidth: 13,
                         itemHeight: 13,
-                        data: ['第一产业', '第二产业', '第三产业', '\n',
+                        formatter: function (name) {
+                            if(name.indexOf('实现增加值')!=-1){
+                                return name.replace('实现增加值','')
+                            } else {
+                                return name.replace('同比增长','')
+                            }
+                        },
+                        data: ['第一产业实现增加值', '第二产业实现增加值', '第三产业实现增加值', '\n',
                             {
-                                name: '第一产业 ',
+                                name: '第一产业同比增长',
                                 textStyle: {
                                     // color: '#77eca6'
                                 }
                             }, {
-                                name: '第二产业 ',
+                                name: '第二产业同比增长',
                                 textStyle: {
                                     // color: '#77eca6'
                                 }
                             }, {
-                                name: '第三产业 ',
+                                name: '第三产业同比增长',
                                 textStyle: {
                                     // color: '#77eca6'
                                 }
@@ -62,7 +69,7 @@
                         },
                         show: true,
                         right: "0%",
-                        top: '0%',
+                        top: '0%'
                     },
                     tooltip: {
                         show: true,
@@ -89,7 +96,7 @@
                         axisLabel: {
                             textStyle: {
                                 fontSize: '70%',
-                                color: '#fff'
+                                color: 'rgba(200,200,200)'
                             }
                         },
                         axisLine: {
@@ -114,7 +121,7 @@
                                 formatter: '{value}',
                                 textStyle: {
                                     fontSize: '70%',
-                                    color: '#fff'
+                                    color: 'rgba(200,200,200)'
                                 }
                             },
                             axisLine: {
@@ -166,29 +173,10 @@
                     ],
                     series: [
                         {
-                            name: '第一产业',
+                            name: '第一产业实现增加值',
                             stack: "基金支出",
                             type: "bar",
-                            barWidth: 8,
-                            barGap: "10%",
-                            itemStyle: {
-                                normal: {
-                                    color: "#ffc21e",
-                                    label: {
-                                        show: false,
-                                        textStyle: {
-                                            color: "#fff"
-                                        },
-                                    }
-                                }
-                            },
-                            data: [0.8,0.8,0.7]
-                        },
-                        {
-                            name: '第二产业',
-                            stack: "基金支出",
-                            type: "bar",
-                            barWidth: 8,
+                            barWidth: 16,
                             barGap: "10%",
                             itemStyle: {
                                 normal: {
@@ -201,17 +189,36 @@
                                     }
                                 }
                             },
-                            data: [732.1,816.7,886.1]
+                            data: [0.8,0.8,0.7]
                         },
                         {
-                            name: '第三产业',
+                            name: '第二产业实现增加值',
                             stack: "基金支出",
                             type: "bar",
-                            barWidth: 8,
+                            barWidth: 16,
                             barGap: "10%",
                             itemStyle: {
                                 normal: {
-                                    color: "#47fbf2",
+                                    color: "#5397f8",
+                                    label: {
+                                        show: false,
+                                        textStyle: {
+                                            color: "#fff"
+                                        },
+                                    }
+                                }
+                            },
+                            data: [732.1,816.7,886.1]
+                        },
+                        {
+                            name: '第三产业实现增加值',
+                            stack: "基金支出",
+                            type: "bar",
+                            barWidth: 16,
+                            barGap: "10%",
+                            itemStyle: {
+                                normal: {
+                                    color: "#ffc21e",
                                     label: {
                                         show: false,
                                         textStyle: {
@@ -223,7 +230,7 @@
                             data: [63.5,71.8,79.2]
                         },
                         {
-                            name: "第一产业 ",
+                            name: "第一产业同比增长",
                             type: "line",
                             yAxisIndex: 1,
                             symbolSize: 2,
@@ -241,7 +248,7 @@
                             data: [21.7,3.4,3.4]
                         },
                         {
-                            name: "第二产业 ",
+                            name: "第二产业同比增长",
                             type: "line",
                             yAxisIndex: 1,
                             symbolSize: 2,
@@ -259,7 +266,7 @@
                             data: [8.1,8.7,8.3]
                         },
                         {
-                            name: "第三产业 ",
+                            name: "第三产业同比增长",
                             type: "line",
                             yAxisIndex: 1,
                             symbolSize: 2,

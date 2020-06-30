@@ -15,10 +15,15 @@
                     legend: {
                         icon: "circle",
                         textStyle: {
+                            fontSize: '20',
                             color: '#fff'
                         }
                     },
-                    tooltip: {},
+                    tooltip: {
+
+                        show: true,
+                        trigger: 'axis'
+                    },
                     dataset: {
                         source: [
                             ['product', '高新', '北湖', '常德', '空港'],
@@ -33,7 +38,7 @@
                         axisLabel: {
                             show: true,
                             textStyle: {
-                                color: '#fff',
+                                color: 'rgba(200,200,200)',
                                 fontSize: '70%',
                             },
                         },
@@ -50,7 +55,7 @@
                         axisLabel: {
                             show: true,
                             textStyle: {
-                                color: '#fff',
+                                color: 'rgba(200,200,200)',
                                 fontSize: '70%',
                             },
                         },
@@ -64,62 +69,39 @@
                     series: [
                         {
                             type: 'bar',
-                            barWidth: 8,
+                            stack: 'xinfang',
+                            barWidth: 16,
                             itemStyle: {
                                 normal: {
-                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                        offset: 0,
-                                        color: '#fff'
-                                    }, {
-                                        offset: 1,
-                                        color: '#1A83D2'
-                                    }]),
-                                    barBorderRadius: 11,
+                                    color: '#3AB6EB',
+                                    // barBorderRadius: 11,
                                 }
                             },
                         }, {
                             type: 'bar',
-                            barWidth: 8,
+                            stack: 'xinfang',
+                            barWidth: 16,
                             itemStyle: {
                                 normal: {
-                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                        offset: 0,
-                                        color: '#55eab2'
-                                    }, {
-                                        offset: 1,
-                                        color: '#195d4e'
-                                    }]),
-                                    barBorderRadius: 11,
+                                    color: '#ffc21e',
                                 }
                             },
                         }, {
                             type: 'bar',
-                            barWidth: 8,
+                            stack: 'xinfang',
+                            barWidth: 16,
                             itemStyle: {
                                 normal: {
-                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                        offset: 0,
-                                        color: '#e9b056'
-                                    }, {
-                                        offset: 1,
-                                        color: '#494a38'
-                                    }]),
-                                    barBorderRadius: 11,
+                                    color: '#877449',
                                 }
                             },
                         }, {
                             type: 'bar',
-                            barWidth: 8,
+                            stack: 'xinfang',
+                            barWidth: 16,
                             itemStyle: {
                                 normal: {
-                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                        offset: 0,
-                                        color: '#49FCB0'
-                                    }, {
-                                        offset: 1,
-                                        color: '#3AB6EB'
-                                    }]),
-                                    barBorderRadius: 11,
+                                    color: '#47fbf2',
                                 }
                             },
                         },

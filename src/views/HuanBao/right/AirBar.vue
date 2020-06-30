@@ -6,7 +6,6 @@
             <div><span class="num">{{aqi}}</span></div>
             <div class="grade">{{quality}}</div>
         </div>
-        <div class="index">AQI</div>
         <div class="chart" ref="chart"></div>
     </div>
 </template>
@@ -18,7 +17,9 @@
             return {
                 aqi: 56,
                 quality: '良',
-                chart: null
+                chart: null,
+                categories: ['园林处', '净月潭', '经开区环卫处'],
+                bar_data: [20, 27, 20]
             }
         },
         computed: {
@@ -33,7 +34,7 @@
                         backgroundColor: 'rgba(0,0,0,0)',
                         marginTop: 20,
                         marginBottom: 40,
-                        marginLeft: 40,
+                        marginLeft: 60,
                         marginRight: 0,
                     },
                     legend: {
@@ -47,7 +48,7 @@
                     },
                     plotOptions: {
                         column: {
-                            pointWidth: 8,
+                            pointWidth: 6,
                             depth: 25,
                             borderColor: ""
                         }
@@ -56,16 +57,16 @@
                         labels: {
                             style: {
                                 'fontSize': '0.6vw',
-                                color: '#fff'
+                                color: 'rgba(200,200,200)'
                             }
                         },
-                        categories: ['园林处', '净月潭', '经开区环卫处']
+                        categories: this.categories
                     },
                     yAxis: {
                         labels: {
                             style: {
                                 'fontSize': '0.6vw',
-                                color: '#fff'
+                                color: 'rgba(200,200,200)'
                             }
                         },
                         title: {
@@ -77,12 +78,12 @@
                             'fontSize': '0.8vw',
                         },
                         shared: true,
-                        headerFormat: '<b>{point.key}</b><br>',
+                        headerFormat: '<b>{point.key}日</b><br>',
                         pointFormat: '<span>AQI: </span><span class="num">{point.y}</span>'
                     },
                     series: [{
                         name: '',
-                        data: [20, 27, 20]
+                        data: this.bar_data
                     }]
                 }
             }
@@ -90,18 +91,40 @@
         created() {
             let that = this
             this.axios.get('http://localhost:8099/test/kshdataget',
-                {"param": {}, "url": "http://120.24.175.113:18884/home/airQuality"},
+                {"param": {}, "url": that.host1 + "/home/airQuality"},
                 {headers: {'Content-Type': 'application/json'}}// {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
             ).then(res => {
                 if (res.status == '200') {
                     that.aqi = res.data.data.aqi
                     that.quality = res.data.data.quality
                 }
-            }).catch(err=>{})
+            }).catch(err => {
+            })
+
+            this.axios.post('http://localhost:8099/test/kshdatapost',
+                {"param": {"csid": 43}, "url": that.host1 + "/container/data/single"},
+                {headers: {'Content-Type': 'application/json'}}// {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
+            ).then(res => {
+                if (res.status == '200') {
+                    that.categories = res.data.data.data.xAxis
+                    let arr = []
+                    res.data.data.data.data[0].data.forEach(function (i) {
+                        arr.push(parseInt(i.val))
+                    })
+                    that.bar_data = arr
+                }
+                that.$nextTick(() => {
+                    if (that.$refs.chart) that.initChart();
+                })
+            }).catch(err => {
+                that.$nextTick(() => {
+                    if (that.$refs.chart) that.initChart();
+                })
+            })
         },
-        mounted() {
-            this.initChart();
-        },
+        // mounted() {
+        //     this.initChart();
+        // },
         methods: {
             initChart() {
                 let that = this
@@ -159,6 +182,6 @@
     }
 
     .chart {
-        height: 78%;
+        height: 88%;
     }
 </style>

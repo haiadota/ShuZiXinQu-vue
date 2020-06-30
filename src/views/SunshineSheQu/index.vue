@@ -7,7 +7,9 @@
       <HuJi></HuJi>
       <Tab3D></Tab3D>
     </LeftView>
-    <MidView></MidView>
+    <MidView>
+      <BuildInfo v-if="buildInfoFlag"></BuildInfo>
+    </MidView>
     <RightView>
       <Theme :value="'特殊人口分布'"></Theme>
       <Special></Special>
@@ -23,75 +25,83 @@
 </template>
 
 <script>
-import MidView from "@/components/MidView.vue";
-import LeftView from "@/components/LeftView.vue";
-import RightView from "@/components/RightView.vue";
-import Theme from "@/components/Theme.vue";
-import Tab3D from "@/components/Tab3D.vue";
-import Menu from "@/components/Menu.vue";
-import JiBenInfo from "./left/JiBenInfo.vue";
-import HuJi from "./left/HuJi.vue";
-import Special from "./right/Special.vue";
-import SheQuEvent from "./right/SheQuEvent.vue";
-import VideoScrollList from "./right/VideoScrollList.vue";
-import Event from "@/postMessage/Iframe.js";
+  import MidView from "@/components/MidView.vue";
+  import LeftView from "@/components/LeftView.vue";
+  import RightView from "@/components/RightView.vue";
+  import Theme from "@/components/Theme.vue";
+  import Tab3D from "@/components/Tab3D.vue";
+  import Menu from "@/components/Menu.vue";
+  import JiBenInfo from "./left/JiBenInfo.vue";
+  import HuJi from "./left/HuJi.vue";
+  import Special from "./right/Special.vue";
+  import SheQuEvent from "./right/SheQuEvent.vue";
+  import VideoScrollList from "./right/VideoScrollList.vue";
+  import Event from "@/postMessage/Iframe.js";
+  import BuildInfo from "@/components/BuildInfo.vue";
 
-export default {
-  name: "SunshineSheQu",
-  components: {
-    MidView,
-    LeftView,
-    RightView,
-    Theme,
-    Tab3D,
-    Menu,
-    JiBenInfo,
-    HuJi,
-    Special,
-    SheQuEvent,
-    VideoScrollList
-  },
-  data() {
-    return {};
-  },
-  methods: {
-    fanhui() {
-      this.$router.push('/SheQu');
-      Event["levelchangemap"]();
+
+  export default {
+    name: "SunshineSheQu",
+    components: {
+      MidView,
+      LeftView,
+      RightView,
+      Theme,
+      Tab3D,
+      Menu,
+      JiBenInfo,
+      HuJi,
+      Special,
+      SheQuEvent,
+      VideoScrollList,
+      BuildInfo
     },
-    postMessage() {
-      let obj = this.$route.query;
-      if (!obj.noevent) {
-        Event["createSheQu"]();
+    computed: {
+      buildInfoFlag() {
+        return this.$store.state.buildInfoFlag;
       }
+    },
+    data() {
+      return {};
+    },
+    methods: {
+      fanhui() {
+        this.$router.push('/SheQu');
+        Event["levelchangemap"]();
+      },
+      postMessage() {
+        let obj = this.$route.query;
+        if (!obj.noevent) {
+          Event["createSheQu"]();
+        }
+      }
+    },
+    created() {
+      this.postMessage();
     }
-  },
-  created() {
-    this.postMessage();
-  }
-};
+  };
 </script>
 
 <style lang="scss" scoped>
-.btn {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
+  .btn {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
 
-  .wrap {
-    padding: 10px 30px 16px;
-    margin: 0 15px;
-    cursor: pointer;
-    background: url("../../../public/image/btn.png") no-repeat;
-    background-size: 100% 100%;
-    text-align: center;
-  }
+    .wrap {
+      padding: 10px 30px 16px;
+      margin: 0 15px;
+      cursor: pointer;
+      background: url("../../../public/image/btn.png") no-repeat;
+      background-size: 100% 100%;
+      text-align: center;
+    }
 
-  .wrap:hover {
-    color: #c5c2fb;
+    .wrap:hover {
+      color: #c5c2fb;
+    }
   }
-}
 </style>
 

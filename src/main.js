@@ -43,7 +43,7 @@ router.beforeEach((to, from, next) => {
             store.commit('handleLoadFlag', true)
         }
     } else {
-        document.getElementById('3dIframe').style.visibility = 'visible'
+        // document.getElementById('3dIframe').style.visibility = 'visible'
         store.commit('handleCarXunCha', false)
         store.commit('handleShowNav', true)
     }
@@ -54,17 +54,21 @@ axios('changchunxinqu.geojson').then(function (geoJson) {
 }).catch(err => {
     console.log(err)
 })
-document.onkeydown = cdk;
 
+
+document.onkeydown = cdk;
 function cdk(e) {
-    var e = e || window.event;
-    if (store.state.LoadPercent == 100 && e.keyCode == 13) {
+    let evn = e || window.event;
+    if (store.state.LoadPercent == 100 && evn.keyCode == 13) {
         let idObject = document.getElementById('loading')
         if (idObject) idObject.parentNode.removeChild(idObject)
         Event['start']()
         document.onkeydown = null
     }
 }
+
+Vue.prototype.host1 = 'http://120.24.175.113:18884'
+Vue.prototype.host2 = 'http://120.24.175.113:18884'
 
 new Vue({
     store,

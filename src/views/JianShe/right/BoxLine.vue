@@ -30,7 +30,7 @@
                         axisLabel: {
                             show: true,
                             textStyle: {
-                                color: '#fff',
+                                color: 'rgba(200,200,200)',
                                 fontSize: '70%',
                             },
                         },
@@ -40,7 +40,7 @@
                         axisLabel: {
                             show: true,
                             textStyle: {
-                                color: '#fff',
+                                color: 'rgba(200,200,200)',
                                 fontSize: '70%',
                             },
                         },

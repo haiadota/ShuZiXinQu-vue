@@ -1,5 +1,5 @@
 <template>
-    <div class="main">
+    <div class="main" ref="main">
         <div v-for="(item,index) in arr" :class="index%2?'light':'dark'" :key="index">
             <!--<p class="dot"></p>-->
             <p class="txt">{{item.title}}:</p>
@@ -28,7 +28,55 @@
                     {title:'社会消费品零售总额实现',number:'84.8',units:'亿元',percent:'6.30',status:1},
                     {title:'一般预算全口径财政收入',number:'86.6',units:'亿元',percent:'8.0',status:1},
                     {title:'一般公共预算财政收入实现',number:'16.7',units:'亿元',percent:'24.0',status:1},
-                ]
+                ],
+                myTimer1: null,
+                myTimer2: null
+            }
+        },
+        methods: {
+            firstShow() {
+                let arr = this.$refs.main.getElementsByClassName('txt')
+                let i = 0
+                let that = this
+                this.myTimer1 = setInterval(function () {
+                    if (i == arr.length) {
+                        clearInterval(that.myTimer1)
+                        that.myTimer1 = null
+                    } else {
+                        arr[i].className = 'txt slideIn'
+                    }
+                    i++
+                }, 300)
+            },
+            secondShow() {
+                let arr = this.$refs.main.getElementsByClassName('numerical')
+                let i = -2
+                let that = this
+                this.myTimer2 = setInterval(function () {
+                    if (i == arr.length) {
+                        clearInterval(that.myTimer2)
+                        that.myTimer2 = null
+                    } else {
+                        if (arr[i]) {
+                            arr[i].className = 'numerical slideIn'
+                        }
+                    }
+                    i++
+                }, 300)
+            }
+        },
+        mounted() {
+            this.firstShow()
+            this.secondShow()
+        },
+        beforeDestroy() {
+            if (this.myTimer1) {
+                clearInterval(this.myTimer1)
+                this.myTimer1 = null
+            }
+            if (this.myTimer2) {
+                clearInterval(this.myTimer2)
+                this.myTimer2 = null
             }
         }
     }
@@ -58,9 +106,11 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        visibility: hidden;
     }
 
     .numerical {
+        visibility: hidden;
         display: flex;
         justify-content: space-between;
         align-items: center;

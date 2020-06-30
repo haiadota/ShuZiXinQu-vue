@@ -9,13 +9,18 @@
         name: "CityEvent",
         data() {
             return {
-                chart: null
+                chart: null,
+                today: new Date().getDate()
             }
         },
         computed: {
             option() {
+                let categories = []
+                for (let i = 6; i >= 0; i--) {
+                    categories.push(this.today - i)
+                }
                 return {
-                    credits:{
+                    credits: {
                         enabled: false,
                     },
                     chart: {
@@ -36,15 +41,15 @@
                     title: {
                         text: ''
                     },
-                    legend:{
+                    legend: {
                         enabled: false,
                     },
                     xAxis: {
-                        categories: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-                        labels:{
-                            style:{
-                                'fontSize' : '0.6vw',
-                                color: '#fff'
+                        categories: categories,
+                        labels: {
+                            style: {
+                                'fontSize': '0.6vw',
+                                'color': 'rgba(200,200,200)'
                             }
                         }
                     },
@@ -54,22 +59,22 @@
                         title: {
                             text: ''
                         },
-                        labels:{
-                            formatter:function (){
+                        labels: {
+                            formatter: function () {
                                 return this.value
                             },
-                            style:{
-                                'fontSize' : '0.6vw',
-                                color: '#fff'
+                            style: {
+                                'fontSize': '0.6vw',
+                                'color': 'rgba(200,200,200)'
                             }
                         }
                     },
                     tooltip: {
-                        style:{
-                            'fontSize' : '0.8vw',
+                        style: {
+                            'fontSize': '0.8vw',
                         },
                         shared: true,
-                        headerFormat: '<b>{point.key}</b>月',
+                        headerFormat: '<b>{point.key}</b>日',
                         // pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y}件 '
                         pointFormat: ': {point.y}件 '
                     },
@@ -77,12 +82,12 @@
                         column: {
                             stacking: 'normal',
                             depth: 12,
-                            pointWidth: 7,
+                            pointWidth: 10,
                             borderColor: ""
                         }
                     },
                     series: [{
-                        data: [500, 300, 140, 420, 120,350, 360, 400, 710, 200,520,280],
+                        data: [4, 2, 3, 3, 2, 3, 1],
                         stack: 'male'
                     }]
                 }
@@ -113,6 +118,7 @@
         position: relative;
         height: 22%;
     }
+
     .highcharts-container {
         height: 100%;
     }

@@ -29,6 +29,9 @@ function handleMenuFlag(){
 function handleLoadPercent(data){
     store.commit('handleLoadPercent', data.data)
 }
+function handleBuildInfoFlag(data){
+    store.commit('handleBuildInfoFlag', data.data)
+}
 EventBus.onEvent('SunshineSheQu', SunshineSheQu)
 EventBus.onEvent('carPage', CarXunCha)
 EventBus.onEvent('KeyQiYe', KeyQiYe)
@@ -38,3 +41,4 @@ EventBus.onEvent('loading', handleLoading)
 EventBus.onEvent('handleMenuFlag', handleMenuFlag)
 EventBus.onEvent('loaded', handleLoaded)
 EventBus.onEvent('loadPercent', handleLoadPercent)
+EventBus.onEvent('buildInfo', handleBuildInfoFlag)

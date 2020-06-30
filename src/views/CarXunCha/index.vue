@@ -91,7 +91,7 @@ export default {
     ];
   },
   mounted() {
-    document.getElementById("3dIframe").style.visibility = "hidden";
+    // document.getElementById("3dIframe").style.visibility = "hidden";
     let obj = this.$route.params;
     this.$refs.GaugeCar.option.series[0].data[0].value = obj["当前车速"] || "0";
     this.$refs.GaugeCar.option.series[1].data[0].value =

@@ -59,7 +59,7 @@
                             show: true,
                             textStyle: {
                                 fontSize: '70%',
-                                color: "#fff" //X轴文字颜色
+                                color: 'rgba(200,200,200)' //X轴文字颜色
                             }
                         },
 
@@ -88,7 +88,7 @@
                                 show: true,
                                 textStyle: {
                                     fontSize: '70%',
-                                    color: "#fff"
+                                    color: 'rgba(200,200,200)'
                                 }
                             },
 
@@ -162,7 +162,7 @@
                         {
                             name: "资产值",
                             type: "bar",
-                            barWidth: 8,
+                            barWidth: 16,
                             itemStyle: {
                                 normal: {
                                     color:new echarts.graphic.LinearGradient(

@@ -3,12 +3,12 @@
         <vuescroll :ops="ops">
         <table class="list parent-dom">
             <thead class="top">
-            <tr class="title">
-                <td>车牌号</td>
-                <td>行驶里程<br>(km)</td>
-                <td>油耗<br>(L/100km)</td>
-                <td>状态</td>
-            </tr>
+                <tr class="title">
+                    <td>车牌号</td>
+                    <td>行驶里程<br>(km)</td>
+                    <td>油耗<br>(L/100km)</td>
+                    <td>状态</td>
+                </tr>
             </thead>
             <tbody>
                 <tr v-for="(item,i) in list" :key="i" class="cell child-dom">

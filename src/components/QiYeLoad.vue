@@ -27,17 +27,17 @@
             return{
                 changeH:false,
                 table:[
-                    {name:'柏林水务长春高新污水处理有限公司',wuranwu:'COD',jiancezhi:'2.6'},
-                    {name:'柏林水务长春长德水处理有限公司',wuranwu:'氨氮',jiancezhi:'5.2'},
-                    {name:'长春桑德翔恒水务有限公司',wuranwu:'COD',jiancezhi:'5.6'},
-                    {name:'锦湖轮胎（长春)有限公司',wuranwu:'粉尘',jiancezhi:'1.5'},
-                    {name:'长春凯密特尔化学品有限公司',wuranwu:'PH值',jiancezhi:'62'},
-                    {name:'长春依多科化工有限公司',wuranwu:'COD',jiancezhi:'5.9'},
-                    {name:'广泽乳业有限公司',wuranwu:'二氧化硫',jiancezhi:'2.5'},
-                    {name:'中国航发长春控制科技有限公司',wuranwu:'镉',jiancezhi:'5.2'},
-                    {name:'长春汉高表面技术有限公司',wuranwu:'COD',jiancezhi:'8.2'},
-                    {name:'锦湖轮胎（长春)有限公司',wuranwu:'硫化物',jiancezhi:'5.2'},
-                    {name:'中国航发长春控制科技有限公司',wuranwu:'铜',jiancezhi:'5.0 '},
+                    {name:'柏林水务长春高新污水处理有限公司',wuranwu:'COD',jiancezhi:'2.6 mg/L'},
+                    {name:'柏林水务长春长德水处理有限公司',wuranwu:'氨氮',jiancezhi:'5.2 mg/L'},
+                    {name:'长春桑德翔恒水务有限公司',wuranwu:'COD',jiancezhi:'5.6 mg/L'},
+                    {name:'锦湖轮胎（长春)有限公司',wuranwu:'粉尘',jiancezhi:'1.5 mg/L'},
+                    {name:'长春凯密特尔化学品有限公司',wuranwu:'PH值',jiancezhi:'62 mg/L'},
+                    {name:'长春依多科化工有限公司',wuranwu:'COD',jiancezhi:'5.9 mg/L'},
+                    {name:'广泽乳业有限公司',wuranwu:'二氧化硫',jiancezhi:'2.5 mg/L'},
+                    {name:'中国航发长春控制科技有限公司',wuranwu:'镉',jiancezhi:'5.2 mg/L'},
+                    {name:'长春汉高表面技术有限公司',wuranwu:'COD',jiancezhi:'8.2 mg/L'},
+                    {name:'锦湖轮胎（长春)有限公司',wuranwu:'硫化物',jiancezhi:'5.2 mg/L'},
+                    {name:'中国航发长春控制科技有限公司',wuranwu:'铜',jiancezhi:'5.0  mg/L'},
                 ]
             }
         },

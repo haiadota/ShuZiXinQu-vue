@@ -10,7 +10,7 @@
                 <div class="right_line"></div>
             </div>
         </div>
-        <div class="txt">E {{pointInfo[0].value[0].toFixed(6)}}°,N {{pointInfo[0].value[1].toFixed(6)}}°</div>
+        <div class="txt">E {{pointInfo[0].value[0].toFixed(6)}}°, N {{pointInfo[0].value[1].toFixed(6)}}°</div>
         <div class="wrap" ref="wrap" :style="{'width':w}">
             <div class="mid">
                 <div class="tab" ref="main"></div>

@@ -95,7 +95,7 @@
             this.axios.post('http://localhost:8099/test/formdata',
                 JSON.stringify({
                     param: {city: "长春市"},
-                    url: "http://120.24.175.113:18884/warning/weatherforecast/index"
+                    url: that.host1 + "/warning/weatherforecast/index"
                 }),
                 {headers: {'Content-Type': 'application/json'}}// {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
             ).then(res => {
@@ -113,7 +113,8 @@
                             that.weather = 'qing'
                     }
                 }
-            }).catch(err => {})
+            }).catch(err => {
+            })
         },
         mounted() {
             let value = window.location.hash.split('/')[1]

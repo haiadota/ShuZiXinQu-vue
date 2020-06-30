@@ -4,9 +4,9 @@
         <table class="list parent-dom">
             <thead class="top">
             <tr>
-                <td class="title">序号</td>
+                <td class="title first">序号</td>
                 <td class="title">企业名称</td>
-                <td class="title">污染物</td>
+                <td class="title third">污染物</td>
                 <td class="title">监测值</td>
             </tr>
             </thead>
@@ -65,13 +65,18 @@
     .list{
         border-collapse: collapse;
         width: 100%;
-        text-align: center;
         line-height: 30px;
         .top{
             background: rgba(255,255,255,0.35);
         }
         .title{
             white-space:nowrap;
+        }
+        .first{
+            padding-right: 5px;
+        }
+        .third{
+            width: 65px;
         }
     }
 </style>

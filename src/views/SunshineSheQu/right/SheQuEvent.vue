@@ -60,7 +60,7 @@
                     },
                     plotOptions: {
                         column: {
-                            pointWidth: 8,
+                            pointWidth: 12,
                             depth: 25
                         }
                     },

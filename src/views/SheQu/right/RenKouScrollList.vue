@@ -63,7 +63,6 @@
     .list{
         border-collapse: collapse;
         width: 100%;
-        text-align: center;
         line-height: 30px;
         .top{
             background: rgba(255,255,255,0.35);

@@ -26,10 +26,10 @@
         name: "CarInfo",
         data() {
             return {
-                xunchaTotal: 100,
+                xunchaTotal: 49,
                 xunchaOnline: 0,
-                huanweiTotal: 100,
-                xunchaOnline: 0,
+                huanweiTotal: 107,
+                huanweiOnline: 0,
                 firstChart: null,
                 secondChart: null,
             };
@@ -100,8 +100,8 @@
                             clockWise: false, //顺时加载
                             zlevel: 1,
                             silent: true,
-                            radius: ["69%", "67%"],
-                            center: ['60%', '50%'],
+                            radius: ["60%", "58%"],
+                            center: ['50%', '50%'],
                             hoverAnimation: false,
                             itemStyle: {
                                 normal: {
@@ -126,8 +126,8 @@
                             type: "pie",
                             zlevel: 20,
                             silent: true,
-                            radius: ["60%", "0%"],
-                            center: ['60%', '50%'],
+                            radius: ["51%", "0%"],
+                            center: ['50%', '50%'],
                             clockWise: false, //顺时加载
                             hoverAnimation: false,
                             itemStyle: {
@@ -148,12 +148,15 @@
                             name: "",
                             type: "pie",
                             clockWise: true,
-                            radius: ["66%", "63%"],
-                            center: ['60%', '50%'],
+                            radius: ["57%", "54%"],
+                            center: ['50%', '50%'],
                             hoverAnimation: false,
                             itemStyle: {
                                 normal: {
                                     label: {
+                                        position: "outer",
+                                        alignTo: "edge",
+                                        margin: 10,
                                         formatter: function (params) {
                                             if (params.name !== "") {
                                                 return (
@@ -205,60 +208,63 @@
         created() {
             let that = this
             this.axios.post('http://localhost:8099/test/kshdatapost',
-                {"param": {"csid": 255}, "url": "http://120.24.175.113:18884/container/data/single"},
+                {"param": {"csid": 255}, "url": that.host1 + "/container/data/single"},
                 {headers: {'Content-Type': 'application/json'}}// {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
             ).then(res => {
                 if (res.status == '200') {
                     let arr = res.data.data.data.data
-                    let onlineNum = 0
-                    arr.forEach(function (i) {
-                        if (i.ONLINE) {
-                            onlineNum++
-                        }
-                    })
-                    that.xunchaTotal = arr.length
-                    that.xunchaOnline = onlineNum
+                    // let onlineNum = 0
+                    // arr.forEach(function (i) {
+                    //     if (i.ONLINE * 1) {
+                    //         onlineNum++
+                    //     }
+                    // })
+                    // that.xunchaTotal = arr.length
+                    // that.xunchaOnline = onlineNum
+                    that.xunchaOnline = arr.length
                 }
                 that.$nextTick(() => {
                     if (that.$refs.first) {
                         that.firstChart = that.$echarts.init(that.$refs.first);
-                        that.firstChart.setOption(that.option('市政巡查车', [that.xunchaOnline, that.huanweiTotal - that.xunchaOnline]));
+                        that.firstChart.setOption(that.option('市政巡查车', [that.xunchaOnline, that.xunchaTotal - that.xunchaOnline]));
                     }
                 })
             }).catch(err => {
                 that.$nextTick(() => {
                     if (that.$refs.second) {
                         that.firstChart = that.$echarts.init(that.$refs.first);
-                        that.firstChart.setOption(that.option('市政巡查车', [4, 96]));
+                        that.firstChart.setOption(that.option('市政巡查车', [4, 45]));
                     }
                 })
             })
             this.axios.post('http://localhost:8099/test/kshdatapost',
-                {"param": {"csid": 278}, "url": "http://120.24.175.113:18884/container/data/single"},
+                {"param": {"csid": 278}, "url": that.host1 + "/container/data/single"},
                 {headers: {'Content-Type': 'application/json'}}// {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
             ).then(res => {
                 if (res.status == '200') {
                     let arr = res.data.data.data.data
-                    let onlineNum = 0
-                    arr.forEach(function (i) {
-                        if (i.ONLINE) {
-                            onlineNum++
-                        }
-                    })
-                    that.huanweiTotal = arr.length
-                    that.xunchaOnline = onlineNum
+                    // let onlineNum = 0
+                    // arr.forEach(function (i) {
+                    //     if (i.ONLINE * 1) {
+                    //         onlineNum++
+                    //     }
+                    // })
+                    // that.huanweiTotal = arr.length
+                    // that.huanweiOnline = onlineNum
+                    that.huanweiOnline = arr.length
+
                 }
                 that.$nextTick(() => {
                     if (that.$refs.second) {
                         that.secondChart = that.$echarts.init(that.$refs.second);
-                        that.secondChart.setOption(that.option('环卫车', [that.xunchaOnline, that.huanweiTotal - that.xunchaOnline]));
+                        that.secondChart.setOption(that.option('环卫车', [that.huanweiOnline, that.huanweiTotal - that.huanweiOnline]));
                     }
                 })
             }).catch(err => {
                 that.$nextTick(() => {
                     if (that.$refs.second) {
                         that.secondChart = that.$echarts.init(that.$refs.second);
-                        that.secondChart.setOption(that.option('环卫车', [24, 76]));
+                        that.secondChart.setOption(that.option('环卫车', [24, 83]));
                     }
                 })
             })
@@ -286,7 +292,7 @@
                 position: absolute;
                 right: 0;
                 top: 0;
-                width: 77%;
+                width: 100%;
                 height: 96%;
                 display: flex;
                 align-items: center;

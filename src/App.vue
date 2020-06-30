@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="loading">
-      <img class="loadingImg" src="../public/image/loading.png" alt />
+      <img class="loadingImg event_all" src="../public/image/loading.png" alt />
       <div class="load_bar">
         <div v-if="LoadPercent!=100" class="percent">
           <div class="left" :style="{'width':((LoadPercent)+'%')}"></div>
@@ -60,6 +60,10 @@ export default {
     ...mapMutations(["handleLoadPercent"])
   },
   mounted() {
+    if (!navigator.onLine) {
+      let idObject = document.getElementById('loading')
+      if (idObject) idObject.parentNode.removeChild(idObject)
+    }
     let that = this;
     let percentTimer = setInterval(function() {
       if (that.LoadPercent > 96) {

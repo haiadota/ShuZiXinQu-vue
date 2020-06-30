@@ -138,7 +138,7 @@
         created() {
             let that = this
             this.axios.get('http://localhost:8099/test/kshdataget',
-                {"param": {}, "url": "http://120.24.175.113:18884/home/airQuality"},
+                {"param": {}, "url": that.host1 + "/home/airQuality"},
                 {headers: {'Content-Type': 'application/json'}}// {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
             ).then(res => {
                 if (res.status == '200') {
@@ -147,7 +147,7 @@
                 }
             })
             this.axios.post('http://localhost:8099/test/kshdatapost',
-                {"param": {"csid": 287}, "url": "http://120.24.175.113:18884/container/data/single"},
+                {"param": {"csid": 287}, "url": that.host1 + "/container/data/single"},
                 {headers: {'Content-Type': 'application/json'}}// {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
             ).then(res => {
                 if (res.status == '200') {
